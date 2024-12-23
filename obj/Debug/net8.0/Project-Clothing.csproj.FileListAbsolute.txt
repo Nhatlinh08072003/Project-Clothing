@@ -30,3 +30,4 @@ D:\Project-Clothing\obj\Debug\net8.0\Project-Clothing.genruntimeconfig.cache
 D:\Project-Clothing\obj\Debug\net8.0\ref\Project-Clothing.dll
 D:\Project-Clothing\bin\Debug\net8.0\package-lock.json
 D:\Project-Clothing\bin\Debug\net8.0\package.json
+D:\Project-Clothing\obj\Debug\net8.0\Project-Clothing.sourcelink.json
