@@ -1,59 +1,93 @@
-<footer class="bg-gray-800 text-black py-8">
-    <div class="flex  mx-auto flex-col w-screen mt-5 justify-center sm:grid-cols-2 md:grid-cols-4  px-4"
-        style="gap:100px">
-        <!-- Section 1: Links -->
-        <div>
-            <h3 class="text-xl font-semibold mb-4 ">Khám Phá</h3>
-            <ul class="space-y-2">
-                <li><a class="hover:underline text-gray-300" href="/home/introduce">Giới Thiệu</a></li>
-                <li><a class="hover:underline text-gray-300" href="/home/aboutus">Về chúng tôi</a></li>
-                <li><a class="hover:underline text-gray-300" href="/product">Sản phẩm</a></li>
-                <li><a class="hover:underline text-gray-300" href="/home/recruitment">Tuyển dụng</a></li>
-            </ul>
+<footer class="bg-gray-800 text-white">
+    <div class="container mx-auto px-4 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Section 1: Khám Phá -->
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-white">Khám Phá</h3>
+                <ul class="space-y-3">
+                    <li>
+                        <a href="/home/introduce" class="text-gray-300 hover:text-white transition-colors duration-300">
+                            <i class="fas fa-chevron-right mr-2 text-sm"></i>Giới Thiệu
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/product" class="text-gray-300 hover:text-white transition-colors duration-300">
+                            <i class="fas fa-chevron-right mr-2 text-sm"></i>Sản Phẩm
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/home/recruitment"
+                            class="text-gray-300 hover:text-white transition-colors duration-300">
+                            <i class="fas fa-chevron-right mr-2 text-sm"></i>Tuyển Dụng
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Section 2: Chính Sách -->
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-white">Chính Sách</h3>
+                <ul class="space-y-3">
+                    <li>
+                        <a href="/home/terms" class="text-gray-300 hover:text-white transition-colors duration-300">
+                            <i class="fas fa-chevron-right mr-2 text-sm"></i>Điều Khoản Sử Dụng
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/home/policy" class="text-gray-300 hover:text-white transition-colors duration-300">
+                            <i class="fas fa-chevron-right mr-2 text-sm"></i>Chính Sách Bảo Mật
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Section 3: Liên Hệ -->
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-white">Liên Hệ</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-center text-gray-300">
+                        <i class="fas fa-phone mr-3 text-sm"></i>
+                        <span>0886 007 589</span>
+                    </li>
+                    <li class="flex items-center text-gray-300">
+                        <i class="fas fa-map-marker-alt mr-3 text-sm"></i>
+                        <span>412/12 Lũy Bán Bích, Tân Phú</span>
+                    </li>
+                    <li class="flex items-center text-gray-300">
+                        <i class="fas fa-envelope mr-3 text-sm"></i>
+                        <span>contact@thriftshop.com</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Section 4: Cửa Hàng -->
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-white">Theo Dõi Chúng Tôi</h3>
+                <div class="mb-4">
+                    <img src="~/images/Logo.png" alt="Company Logo" class="w-40 mb-4">
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-facebook-f text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-tiktok text-xl"></i>
+                    </a>
+                </div>
+            </div>
         </div>
 
-        <!-- Section 2: Terms & Policy -->
-        <div>
-            <h3 class="text-xl font-semibold mb-4 ">Chính Sách</h3>
-            <ul class="space-y-2">
-                <li><a class="hover:underline text-gray-300" href="/home/terms">Điều khoản sử dụng</a></li>
-                <li><a class="hover:underline text-gray-300" href="/home/policy">Chính sách bảo mật thông tin</a></li>
-            </ul>
+        <!-- Bottom line -->
+        <div class="mt-8 pt-6 border-t border-gray-700 text-center">
+            <p class="text-gray-400 text-sm">
+                &copy; 2024 Thriftshop. Bản quyền thuộc về Weathered Team.
+            </p>
         </div>
-
-        <!-- Section 3: Contact Info -->
-        <div>
-            <h3 class="text-xl font-semibold mb-4">Liên Hệ</h3>
-            <ul class="space-y-2">
-                <li class="flex items-center text-gray-300">
-                    <img src="https://cdn-icons-png.flaticon.com/128/3059/3059561.png" alt="Telephone" width="18"
-                        height="18">
-                    <span class="ml-2">Đặt hàng 1800 6939</span>
-                </li>
-                <li class="flex items-center text-gray-300">
-                    <img src="https://cdn-icons-png.flaticon.com/128/5616/5616461.png" alt="Gps" width="18" height="18">
-                    <span class="ml-2">Liên hệ</span>
-                </li>
-                </li>
-            </ul>
-        </div>
-
-        <!-- Section 4: Logo & Company Info -->
-        <div>
-            <h3 class="text-lg font-semibold mb-4">Công Ty</h3>
-            <ul class="space-y-2 text-lg">
-                <li><img src="~/images/Logo.png" alt="Company Logo" style="width: 150px;" class=" object-contain mb-2">
-                </li>
-                <li>Công ty cổ phần thương mại dịch vụ Trà Cà Phê VN</li>
-
-                <li>Địa chỉ: 86-88 Cao Thắng, Phường 04, Quận 3, TP.Hồ Chí Minh</li>
-                <li>Email: hi@thecoffeehouse.vn</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Bottom line -->
-    <div class="text-center py-4 bg-gray-900 text-gray-400">
-        <p>&copy; 2024-2022 Công ty cổ phần thương mại dịch vụ Trà Cà Phê VN</p>
     </div>
 </footer>

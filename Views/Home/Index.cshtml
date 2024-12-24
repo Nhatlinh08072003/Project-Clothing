@@ -1,3 +1,201 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Homepage</title>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-50">
+    <!-- Hero Section with Image Slider -->
+    <div x-data="imageSlider()" class="relative w-full h-[600px] overflow-hidden">
+        <div class="absolute inset-0 flex transition-transform duration-500"
+            :style="`transform: translateX(-${currentIndex * 100}%)`">
+            <div class="relative w-full h-full flex-shrink-0">
+                <img src="https://picsum.photos/1920/600?random=1" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                    <div class="text-center text-white">
+                        <h1 class="text-5xl font-bold mb-4">Welcome to Our Store</h1>
+                        <p class="text-xl mb-8">Discover amazing products at great prices</p>
+                        <a href="#" class="bg-white text-black px-8 py-3 rounded-full hover:bg-gray-100 transition">Shop
+                            Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="relative w-full h-full flex-shrink-0">
+                <img src="https://picsum.photos/1920/600?random=2" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                    <div class="text-center text-white">
+                        <h1 class="text-5xl font-bold mb-4">New Collection</h1>
+                        <p class="text-xl mb-8">Check out our latest arrivals</p>
+                        <a href="#" class="bg-white text-black px-8 py-3 rounded-full hover:bg-gray-100 transition">View
+                            Collection</a>
+                    </div>
+                </div>
+            </div>
+            <div class="relative w-full h-full flex-shrink-0">
+                <img src="https://picsum.photos/1920/600?random=3" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                    <div class="text-center text-white">
+                        <h1 class="text-5xl font-bold mb-4">Special Offers</h1>
+                        <p class="text-xl mb-8">Up to 50% off on selected items</p>
+                        <a href="#" class="bg-white text-black px-8 py-3 rounded-full hover:bg-gray-100 transition">Shop
+                            Deals</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button x-on:click="prev()"
+            class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 text-gray-800 p-4 rounded-full hover:bg-white transition">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button x-on:click="next()"
+            class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 text-gray-800 p-4 rounded-full hover:bg-white transition">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+            <template x-for="(_, index) in images" :key="index">
+                <button x-on:click="currentIndex = index"
+                    :class="currentIndex === index ? 'w-8 bg-white' : 'w-2 bg-white/60'"
+                    class="h-2 rounded-full transition-all duration-300">
+                </button>
+            </template>
+        </div>
+    </div>
+
+    <!-- Featured Categories -->
+    <div class="max-w-7xl mx-auto px-4 py-16">
+        <h2 class="text-3xl font-bold text-center mb-12">Shop by Category</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div
+                class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                <img src="https://picsum.photos/400/300?random=4"
+                    class="w-full h-[300px] object-cover transform group-hover:scale-110 transition duration-500">
+                <div
+                    class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                    <a href="#" class="text-white text-xl font-semibold hover:underline">Category 1</a>
+                </div>
+            </div>
+            <div
+                class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                <img src="https://picsum.photos/400/300?random=5"
+                    class="w-full h-[300px] object-cover transform group-hover:scale-110 transition duration-500">
+                <div
+                    class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                    <a href="#" class="text-white text-xl font-semibold hover:underline">Category 2</a>
+                </div>
+            </div>
+            <div
+                class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                <img src="https://picsum.photos/400/300?random=6"
+                    class="w-full h-[300px] object-cover transform group-hover:scale-110 transition duration-500">
+                <div
+                    class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                    <a href="#" class="text-white text-xl font-semibold hover:underline">Category 3</a>
+                </div>
+            </div>
+            <div
+                class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                <img src="https://picsum.photos/400/300?random=6"
+                    class="w-full h-[300px] object-cover transform group-hover:scale-110 transition duration-500">
+                <div
+                    class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                    <a href="#" class="text-white text-xl font-semibold hover:underline">Category 3</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Products -->
+    <div class="new-arrivals">
+        <h2 class="text-2xl font-bold mb-4">NEW ARRIVALS</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="border rounded-lg p-4 shadow-md">
+                <img src="/api/placeholder/400/500" alt="Vintage 90's AFI East Bay Hardcore T-Shirt"
+                    class="w-full h-auto rounded-md mb-4">
+                <h3 class="text-lg font-semibold">Vintage 90's AFI East Bay Hardcore T-Shirt</h3>
+                <p class="text-gray-700">5,165,000 VND</p>
+                <button class="bg-blue-500 text-white py-2 px-4 rounded mt-4">Add to cart</button>
+            </div>
+            <div class="border rounded-lg p-4 shadow-md">
+                <img src="/api/placeholder/400/500" alt="Vintage AFI East Bay Hardcore Hoodie"
+                    class="w-full h-auto rounded-md mb-4">
+                <h3 class="text-lg font-semibold">Vintage AFI East Bay Hardcore Hoodie</h3>
+                <p class="text-gray-700">4,906,000 VND</p>
+                <button class="bg-blue-500 text-white py-2 px-4 rounded mt-4">Add to cart</button>
+            </div>
+            <div class="border rounded-lg p-4 shadow-md">
+                <img src="/api/placeholder/400/500" alt="Vintage 1998 Sick Of It All Australian Tour T-Shirt"
+                    class="w-full h-auto rounded-md mb-4">
+                <h3 class="text-lg font-semibold">Vintage 1998 Sick Of It All Australian Tour T-Shirt</h3>
+                <p class="text-gray-700">4,390,000 VND</p>
+                <button class="bg-blue-500 text-white py-2 px-4 rounded mt-4">Add to cart</button>
+            </div>
+            <div class="border rounded-lg p-4 shadow-md">
+                <img src="/api/placeholder/400/500"
+                    alt="Vintage 1999 Buried Alive The Death Of Your Perfect World T-Shirt"
+                    class="w-full h-auto rounded-md mb-4">
+                <h3 class="text-lg font-semibold">Vintage 1999 Buried Alive The Death Of Your Perfect World T-Shirt</h3>
+                <p class="text-gray-700">2,324,000 VND</p>
+                <p class="text-red-600 font-bold mt-2">Sold out</p>
+            </div>
+        </div>
+        <div class="mt-6 text-center">
+            <a href="/products/new-arrivals" class="text-blue-600 hover:underline">View all</a>
+        </div>
+    </div>
+
+
+    <!-- Newsletter Section -->
+    <div class="bg-gray-100 py-16">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Subscribe to Our Newsletter</h2>
+            <p class="text-gray-600 mb-8">Stay updated with our latest products and offers</p>
+            <form class="max-w-md mx-auto flex gap-4">
+                <input type="email" placeholder="Enter your email"
+                    class="flex-1 px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <button type="submit"
+                    class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">Subscribe</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function imageSlider() {
+            return {
+                currentIndex: 0,
+                showQuickView: false,
+                images: [
+                    'https://picsum.photos/1920/600?random=1',
+                    'https://picsum.photos/1920/600?random=2',
+                    'https://picsum.photos/1920/600?random=3'
+                ],
+                next() {
+                    this.currentIndex = (this.currentIndex + 1) % this.images.length;
+                },
+                prev() {
+                    this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
+                },
+                startAutoplay() {
+                    setInterval(() => this.next(), 5000);
+                }
+            }
+        }
+        // Start autoplay when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            const slider = document.querySelector('[x-data="imageSlider()"]').__x.$data;
+            slider.startAutoplay();
+        });
+    </script>
+</body>
+
+</html>
