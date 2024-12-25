@@ -15,42 +15,25 @@
 
 <body class="bg-gray-50">
     <!-- Hero Section with Image Slider -->
-    <div x-data="imageSlider()" class="relative w-full h-[600px] overflow-hidden">
+
+    <div x-data="imageSlider()" class="relative w-full h-[700px] overflow-hidden">
         <div class="absolute inset-0 flex transition-transform duration-500"
             :style="`transform: translateX(-${currentIndex * 100}%)`">
-            <div class="relative w-full h-full flex-shrink-0">
-                <img src="https://picsum.photos/1920/600?random=1" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
-                    <div class="text-center text-white">
-                        <h1 class="text-5xl font-bold mb-4">Welcome to Our Store</h1>
-                        <p class="text-xl mb-8">Discover amazing products at great prices</p>
-                        <a href="#" class="bg-white text-black px-8 py-3 rounded-full hover:bg-gray-100 transition">Shop
-                            Now</a>
+            <template x-for="(image, index) in images" :key="index">
+                <div class="relative w-full h-full flex-shrink-0">
+                    <img :src="image.src" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <h1 class="text-5xl font-bold mb-4" x-text="image.title"></h1>
+                            <p class="text-xl mb-8" x-text="image.description"></p>
+                            <a :href="image.link"
+                                class="bg-white text-black px-8 py-3 rounded-full hover:bg-gray-100 transition">
+                                <span x-text="image.buttonText"></span>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="relative w-full h-full flex-shrink-0">
-                <img src="https://picsum.photos/1920/600?random=2" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
-                    <div class="text-center text-white">
-                        <h1 class="text-5xl font-bold mb-4">New Collection</h1>
-                        <p class="text-xl mb-8">Check out our latest arrivals</p>
-                        <a href="#" class="bg-white text-black px-8 py-3 rounded-full hover:bg-gray-100 transition">View
-                            Collection</a>
-                    </div>
-                </div>
-            </div>
-            <div class="relative w-full h-full flex-shrink-0">
-                <img src="https://picsum.photos/1920/600?random=3" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
-                    <div class="text-center text-white">
-                        <h1 class="text-5xl font-bold mb-4">Special Offers</h1>
-                        <p class="text-xl mb-8">Up to 50% off on selected items</p>
-                        <a href="#" class="bg-white text-black px-8 py-3 rounded-full hover:bg-gray-100 transition">Shop
-                            Deals</a>
-                    </div>
-                </div>
-            </div>
+            </template>
         </div>
 
         <button x-on:click="prev()"
@@ -71,77 +54,33 @@
             </template>
         </div>
     </div>
-
-    <!-- Featured Categories -->
-    <div class="max-w-7xl mx-auto px-4 py-16">
-        <h2 class="text-3xl font-bold text-center mb-12">Shop by Category</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div
-                class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
-                <img src="https://picsum.photos/400/300?random=4"
-                    class="w-full h-[300px] object-cover transform group-hover:scale-110 transition duration-500">
-                <div
-                    class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                    <a href="#" class="text-white text-xl font-semibold hover:underline">Category 1</a>
-                </div>
-            </div>
-            <div
-                class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
-                <img src="https://picsum.photos/400/300?random=5"
-                    class="w-full h-[300px] object-cover transform group-hover:scale-110 transition duration-500">
-                <div
-                    class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                    <a href="#" class="text-white text-xl font-semibold hover:underline">Category 2</a>
-                </div>
-            </div>
-            <div
-                class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
-                <img src="https://picsum.photos/400/300?random=6"
-                    class="w-full h-[300px] object-cover transform group-hover:scale-110 transition duration-500">
-                <div
-                    class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                    <a href="#" class="text-white text-xl font-semibold hover:underline">Category 3</a>
-                </div>
-            </div>
-            <div
-                class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
-                <img src="https://picsum.photos/400/300?random=6"
-                    class="w-full h-[300px] object-cover transform group-hover:scale-110 transition duration-500">
-                <div
-                    class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                    <a href="#" class="text-white text-xl font-semibold hover:underline">Category 3</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Featured Products -->
-    <div class="new-arrivals">
+    <div class="new-arrivals mt-8">
         <h2 class="text-2xl font-bold mb-4">NEW ARRIVALS</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="border rounded-lg p-4 shadow-md">
-                <img src="/api/placeholder/400/500" alt="Vintage 90's AFI East Bay Hardcore T-Shirt"
-                    class="w-full h-auto rounded-md mb-4">
+            <div class="p-6 border">
+                <img src="https://www.millsvintageusa.com/cdn/shop/files/AB4682B5-FD31-4A1D-86BE-F3BEA6704B76.jpg?v=1735060082&width=1946"
+                    alt="Vintage 90's AFI East Bay Hardcore T-Shirt" class="w-full h-auto rounded-md mb-4">
                 <h3 class="text-lg font-semibold">Vintage 90's AFI East Bay Hardcore T-Shirt</h3>
                 <p class="text-gray-700">5,165,000 VND</p>
-                <button class="bg-blue-500 text-white py-2 px-4 rounded mt-4">Add to cart</button>
+                <button class="bg-gray-500 text-white py-2 px-4 rounded mt-4">Add to cart</button>
             </div>
-            <div class="border rounded-lg p-4 shadow-md">
-                <img src="/api/placeholder/400/500" alt="Vintage AFI East Bay Hardcore Hoodie"
-                    class="w-full h-auto rounded-md mb-4">
+            <div class="p-6 border">
+                <img src="https://www.millsvintageusa.com/cdn/shop/files/F1E089FA-780F-46B8-B109-E93E987C8425.jpg?v=1735059996&width=1946"
+                    alt="Vintage AFI East Bay Hardcore Hoodie" class="w-full h-auto rounded-md mb-4">
                 <h3 class="text-lg font-semibold">Vintage AFI East Bay Hardcore Hoodie</h3>
                 <p class="text-gray-700">4,906,000 VND</p>
-                <button class="bg-blue-500 text-white py-2 px-4 rounded mt-4">Add to cart</button>
+                <button class="bg-gray-500 text-white py-2 px-4 rounded mt-4">Add to cart</button>
             </div>
-            <div class="border rounded-lg p-4 shadow-md">
-                <img src="/api/placeholder/400/500" alt="Vintage 1998 Sick Of It All Australian Tour T-Shirt"
-                    class="w-full h-auto rounded-md mb-4">
+            <div class="p-6 border">
+                <img src="https://www.millsvintageusa.com/cdn/shop/files/8390BDFA-0CCC-4698-82F3-983C52033D53.jpg?v=1735059909&width=1946"
+                    alt="Vintage 1998 Sick Of It All Australian Tour T-Shirt" class="w-full h-auto rounded-md mb-4">
                 <h3 class="text-lg font-semibold">Vintage 1998 Sick Of It All Australian Tour T-Shirt</h3>
                 <p class="text-gray-700">4,390,000 VND</p>
-                <button class="bg-blue-500 text-white py-2 px-4 rounded mt-4">Add to cart</button>
+                <button class="bg-gray-500 text-white py-2 px-4 rounded mt-4">Add to cart</button>
             </div>
-            <div class="border rounded-lg p-4 shadow-md">
-                <img src="/api/placeholder/400/500"
+            <div class="border p-6">
+                <img src="https://www.millsvintageusa.com/cdn/shop/files/E91EB852-59C3-45B5-A3A4-5F3486B0578E.jpg?v=1735059742&width=1946"
                     alt="Vintage 1999 Buried Alive The Death Of Your Perfect World T-Shirt"
                     class="w-full h-auto rounded-md mb-4">
                 <h3 class="text-lg font-semibold">Vintage 1999 Buried Alive The Death Of Your Perfect World T-Shirt</h3>
@@ -153,6 +92,49 @@
             <a href="/products/new-arrivals" class="text-blue-600 hover:underline">View all</a>
         </div>
     </div>
+
+    <!-- Featured Categories -->
+    <div class="max-w-9xl mx-auto px-4 py-16">
+        <h2 class="text-3xl font-bold text-center mb-12">SHOP BY CATEGORY</h2>
+        <div class="grid grid-cols-1 mx-auto  md:grid-cols-3 gap-8">
+            <div class="bg-gray-100 mt-[50px]">
+                <h1 class="font-semibold text-3xl">
+                    Welcome to Weathered
+                </h1>
+                <p class="mt-2 text-lg">
+                    Tại Weathered, chúng tôi tái định nghĩa phong cách thời trang vượt thời gian với bộ sưu tập kết hợp
+                    sự mạnh mẽ và thanh lịch hiện đại.
+                    Thiết kế của chúng tôi tập trung vào sự tinh xảo và chất lượng cao, với các sản phẩm đa năng phù hợp
+                    cho mọi mùa trong năm.
+                    Từ những chiếc áo khoác đặc trưng, áo len thoải mái, đến quần âu được may đo kỹ lưỡng và trang phục
+                    ngoài trời sang trọng, Weathered mang đến những sản phẩm bền bỉ với thời gian.
+                    Khám phá phong cách tinh tế cùng Weathered thương hiệu tôn vinh độ bền, sự chân thực và vẻ đẹp của
+                    sự giản đơn.
+                </p>
+            </div>
+            <div
+                class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                <img src="~/images/men.jpg"
+                    class="w-[500px] h-[700px] object-cover transform group-hover:scale-110 transition duration-500">
+                <div
+                    class="absolute inset-0 hover:bg-black/50 flex items-center justify-center opacity-100 transition duration-300">
+                    <a href="#" class="text-white text-3xl font-semibold hover:underline">SHOP MENSWEAR </a>
+                </div>
+            </div>
+            <div
+                class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                <img src="~/images/women.jpg"
+                    class="w-[500px] h-[700px] object-cover transform group-hover:scale-110 transition duration-500">
+                <div
+                    class="absolute inset-0 hover:bg-black/50 flex items-center justify-center opacity-100 transition duration-300">
+                    <a href="#" class="text-white text-3xl font-semibold hover:underline">SHOP WOMENSWEAR </a>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
 
 
     <!-- Newsletter Section -->
@@ -173,11 +155,28 @@
         function imageSlider() {
             return {
                 currentIndex: 0,
-                showQuickView: false,
                 images: [
-                    'https://picsum.photos/1920/600?random=1',
-                    'https://picsum.photos/1920/600?random=2',
-                    'https://picsum.photos/1920/600?random=3'
+                    {
+                        src: 'https://www.electricland-tokyo.com/cdn/shop/files/2021-03-03_16_38_40.jpg?v=1617583520',
+                        title: 'Welcome to Our Store',
+                        description: 'Discover amazing products at great prices',
+                        buttonText: 'Shop Now',
+                        link: '#'
+                    },
+                    {
+                        src: 'https://www.electricland-tokyo.com/cdn/shop/files/2021-03-03-17-46-18.jpg?v=1617811192',
+                        title: 'New Collection',
+                        description: 'Check out our latest arrivals',
+                        buttonText: 'View Collection',
+                        link: '#'
+                    },
+                    {
+                        src: 'https://www.electricland-tokyo.com/cdn/shop/files/2021-03-03-17-46-16.jpg?v=1617811228',
+                        title: 'Special Offers',
+                        description: 'Up to 50% off on selected items',
+                        buttonText: 'Shop Deals',
+                        link: '#'
+                    }
                 ],
                 next() {
                     this.currentIndex = (this.currentIndex + 1) % this.images.length;
@@ -187,14 +186,12 @@
                 },
                 startAutoplay() {
                     setInterval(() => this.next(), 5000);
+                },
+                init() {
+                    this.startAutoplay();
                 }
-            }
+            };
         }
-        // Start autoplay when the page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            const slider = document.querySelector('[x-data="imageSlider()"]').__x.$data;
-            slider.startAutoplay();
-        });
     </script>
 </body>
 

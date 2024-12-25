@@ -25,6 +25,14 @@
       "PackagePath": "staticwebassets\\images\\logo.png"
     },
     {
+      "Id": "D:\\Project-Clothing\\wwwroot\\images\\men.jpg",
+      "PackagePath": "staticwebassets\\images\\men.jpg"
+    },
+    {
+      "Id": "D:\\Project-Clothing\\wwwroot\\images\\women.jpg",
+      "PackagePath": "staticwebassets\\images\\women.jpg"
+    },
+    {
       "Id": "D:\\Project-Clothing\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
