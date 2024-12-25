@@ -1,122 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
 <body class="bg-gray-50">
-    <header class="bg-white shadow-lg">
-        <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+    <header class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <nav class="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8" aria-label="Global">
             <div class="flex lg:flex-1">
                 <a href="#" class="-m-1.5 p-1.5">
                     <span class="sr-only">Your Company</span>
-                    <img src="~/images/logo.png" style="width: 150px;" alt="">
+                    <img src="~/images/logo.png" alt="Logo" class="h-[100px] w-[100px]">
                 </a>
             </div>
+
             <div class="flex lg:hidden">
-                <button type="button"
-                    class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 hover:text-gray-900">
+                <button type="button" id="mobile-menu-button"
+                    class="inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 hover:bg-gray-100 transition">
                     <span class="sr-only">Open main menu</span>
-                    <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                        aria-hidden="true">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                     </svg>
                 </button>
             </div>
+
             <div class="hidden lg:flex lg:gap-x-12">
-                <a href="#"
-                    class="text-gray-900 text-base font-medium hover:text-blue-500 transition-colors duration-300">Product</a>
-                <a href="#"
-                    class="text-gray-900 text-base font-medium hover:text-blue-500 transition-colors duration-300">Features</a>
-                <a href="#"
-                    class="text-gray-900 text-base font-medium hover:text-blue-500 transition-colors duration-300">Marketplace</a>
-                <a href="#"
-                    class="text-gray-900 text-base font-medium hover:text-blue-500 transition-colors duration-300">Company</a>
+                <div class="relative">
+                    <button id="product-button"
+                        class=" relative flex items-center text-gray-900 text-base font-medium hover:text-blue-500 transition">
+                        Product
+                        <svg class="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </button>
+
+                    <div id="product-dropdown"
+                        class="absolute  hidden bg-white w-screen  max-w-4xl rounded-lg shadow-lg mt-2 z-50">
+                        <div class="p-6 grid grid-cols-5 gap-6 ">
+
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800 mb-4">Pop</h3>
+                                <ul>
+                                    <li><a href="#" class="text-gray-600 hover:text-blue-500 transition">Rap Tees</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800 mb-4">Electronic</h3>
+                                <ul>
+                                    <li><a href="#" class="text-gray-600 hover:text-blue-500 transition">Movies / TV
+                                            Shows</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800 mb-4">Other</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#"
+                                            class="text-gray-600 hover:text-blue-500 transition">Skateboarding</a></li>
+                                    <li><a href="#" class="text-gray-600 hover:text-blue-500 transition">Video Games /
+                                            Comics</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800 mb-4">Garments</h3>
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-gray-600 hover:text-blue-500 transition">T-Shirts</a>
+                                    </li>
+                                    <li><a href="#" class="text-gray-600 hover:text-blue-500 transition">Longsleeve</a>
+                                    </li>
+                                    <li><a href="#" class="text-gray-600 hover:text-blue-500 transition">Hoodies /
+                                            Sweatshirts</a></li>
+                                    <li><a href="#" class="text-gray-600 hover:text-blue-500 transition">Hats</a></li>
+                                    <li><a href="#" class="text-gray-600 hover:text-blue-500 transition">Jackets</a>
+                                    </li>
+                                    <li><a href="#" class="text-gray-600 hover:text-blue-500 transition">Bottoms</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" class="text-gray-900 text-base font-medium hover:text-blue-500 transition">Features</a>
+                <a href="#" class="text-gray-900 text-base font-medium hover:text-blue-500 transition">Marketplace</a>
+                <a href="#" class="text-gray-900 text-base font-medium hover:text-blue-500 transition">Company</a>
             </div>
-            <div class="hidden lg:flex lg:flex-1 lg:justify-end items-center gap-4 space-x-6">
-                <!-- Bell Icon -->
-                <a href="#" class="text-gray-500 hover:text-gray-900 transition-colors duration-300">
+
+            <div class="hidden lg:flex lg:flex-1 lg:justify-end items-center gap-4">
+                <a href="#" class="text-gray-500 hover:text-gray-900 transition">
                     <i class="fas fa-bell text-xl"></i>
                 </a>
-                <!-- Shopping Cart Icon -->
-                <a href="#" class="text-gray-500 hover:text-gray-900 transition-colors duration-300">
+                <a href="#" class="text-gray-500 hover:text-gray-900 transition">
                     <i class="fas fa-shopping-cart text-xl"></i>
                 </a>
-
-                <!-- Log in button -->
-                <a href="#" class="text-gray-900 font-medium hover:text-blue-500 transition-colors duration-300">
+                <a href="#" class="text-gray-900 font-medium hover:text-blue-500 transition">
                     Log in <span aria-hidden="true">&rarr;</span>
                 </a>
             </div>
         </nav>
 
-        <!-- Mobile menu, show/hide based on menu open state. -->
-        <div class="lg:hidden" role="dialog" aria-modal="true">
-            <!-- Background backdrop, show/hide based on slide-over state. -->
-            <div class="fixed inset-0 z-10  opacity-50"></div>
-            <div
-                class="fixed inset-y-0 right-0 z-20 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-                <div class="flex items-center justify-between">
-                    <a href="#" class="-m-1.5 p-1.5">
-                        <span class="sr-only">Your Company</span>
-                        <img src="~/images/logo.png" style="width: 150px;" alt="">
-                    </a>
-                    <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
-                        <span class="sr-only">Close menu</span>
-                        <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                            aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-                <div class="mt-6">
-                    <div class="space-y-4">
-                        <a href="#"
-                            class="block text-base font-semibold text-gray-900 hover:bg-gray-50 px-3 py-2 rounded-md">Features</a>
-                        <a href="#"
-                            class="block text-base font-semibold text-gray-900 hover:bg-gray-50 px-3 py-2 rounded-md">Marketplace</a>
-                        <a href="#"
-                            class="block text-base font-semibold text-gray-900 hover:bg-gray-50 px-3 py-2 rounded-md">Company</a>
-                    </div>
+        <!-- Backdrop -->
+        <div class="hidden fixed inset-0 bg-black bg-opacity-50 z-40" id="backdrop"></div>
 
-                    <div class="py-6">
-                        <a href="#"
-                            class="flex gap-4 items-center text-base font-semibold text-gray-900 hover:bg-gray-50 px-3 py-2 rounded-md">
-                            <i class="fas fa-shopping-cart mr-2 text-gray-400"></i>
-                            <i class="fas fa-bell mr-2 text-gray-400"></i>
-                            Log in
-                        </a>
-                    </div>
-                </div>
+        <!-- Mobile menu -->
+        <div class="fixed inset-y-0 right-0 transform translate-x-full transition-transform bg-white w-full max-w-sm z-50 p-6 overflow-y-auto lg:hidden"
+            id="mobile-menu">
+            <div class="flex items-center justify-between mb-6">
+                <a href="#" class="-m-1.5 p-1.5">
+                    <span class="sr-only">Your Company</span>
+                    <img src="/api/placeholder/150/50" alt="Logo" class="h-8 w-auto">
+                </a>
+                <button type="button" id="close-menu-button"
+                    class="rounded-md p-2.5 text-gray-700 hover:bg-gray-100 transition">
+                    <span class="sr-only">Close menu</span>
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="space-y-4">
+                <button id="mobile-product-button"
+                    class="flex items-center justify-between w-full text-base font-semibold text-gray-900 hover:bg-gray-100 p-3 rounded-lg">
+                    Product
+                    <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                    </svg>
+                </button>
+                <a href="#"
+                    class="block text-base font-semibold text-gray-900 hover:bg-gray-100 p-3 rounded-lg">Features</a>
+                <a href="#"
+                    class="block text-base font-semibold text-gray-900 hover:bg-gray-100 p-3 rounded-lg">Marketplace</a>
+                <a href="#"
+                    class="block text-base font-semibold text-gray-900 hover:bg-gray-100 p-3 rounded-lg">Company</a>
+            </div>
+
+            <div class="mt-8 flex items-center gap-4">
+                <a href="#" class="text-gray-500 hover:text-gray-900 transition">
+                    <i class="fas fa-bell text-xl"></i>
+                </a>
+                <a href="#" class="text-gray-500 hover:text-gray-900 transition">
+                    <i class="fas fa-shopping-cart text-xl"></i>
+                </a>
+                <a href="#" class="text-gray-900 font-medium hover:text-blue-500 transition">
+                    Log in <span aria-hidden="true">&rarr;</span>
+                </a>
             </div>
         </div>
     </header>
 
-
-
     <script>
-        // Lấy reference đến các elements cần thiết
-        const mobileMenuButton = document.querySelector('[aria-label="Open main menu"]');
-        const closeMenuButton = document.querySelector('button[aria-label="Close menu"]');
-        const mobileMenu = document.querySelector('[role="dialog"]');
+        // Dropdown toggle
+        const productButton = document.getElementById('product-button');
+        const productDropdown = document.getElementById('product-dropdown');
+        let isDropdownOpen = false;
 
-        // Mặc định ẩn mobile menu
-        mobileMenu.style.display = 'none';
-
-        // Thêm event listener cho nút mở menu
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.style.display = 'block';
+        productButton?.addEventListener('click', () => {
+            isDropdownOpen = !isDropdownOpen;
+            productDropdown.classList.toggle('hidden', !isDropdownOpen);
         });
 
-        // Thêm event listener cho nút đóng menu
-        closeMenuButton.addEventListener('click', () => {
-            mobileMenu.style.display = 'none';
-        });
-
-        // Thêm event listener cho backdrop để đóng menu khi click ra ngoài
-        mobileMenu.addEventListener('click', (e) => {
-            if (e.target === mobileMenu) {
-                mobileMenu.style.display = 'none';
+        document.addEventListener('click', (event) => {
+            if (!productButton?.contains(event.target) && !productDropdown?.contains(event.target)) {
+                productDropdown.classList.add('hidden');
+                isDropdownOpen = false;
             }
         });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const backdrop = document.getElementById('backdrop');
+
+        function openMobileMenu() {
+            mobileMenu.classList.remove('translate-x-full');
+            backdrop.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.add('translate-x-full');
+            backdrop.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        mobileMenuButton?.addEventListener('click', openMobileMenu);
+        closeMenuButton?.addEventListener('click', closeMobileMenu);
+        backdrop?.addEventListener('click', closeMobileMenu);
     </script>
 </body>
+
+</html>
