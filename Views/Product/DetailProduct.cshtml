@@ -1,0 +1,105 @@
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 mt-[150px]">
+    <!-- Breadcrumb -->
+    <nav class="flex items-center text-sm text-gray-500 mb-8">
+        <a href="/" class="hover:text-gray-900">Trang chủ</a>
+        <span class="mx-2">/</span>
+        <a href="/tees" class="hover:text-gray-900">TEES</a>
+        <span class="mx-2">/</span>
+        <span class="text-gray-900">PRODUCT_NAME</span>
+    </nav>
+
+    <div class="lg:grid lg:grid-cols-2 lg:gap-x-12">
+        <!-- Left: Product Images -->
+        <div class="relative">
+            <!-- Main Image -->
+            <div class="aspect-w-1 aspect-h-1 mb-4">
+                <img src="https://product.hstatic.net/200000475003/product/25_c1f41094bc224fc78653d0ff6d2c3ffc_master.png"
+                    alt="PRODUCT_NAME" class="w-full h-full object-center object-cover rounded-lg">
+            </div>
+
+            <!-- Thumbnail Images -->
+            <div class="grid grid-cols-4 gap-4">
+                <!-- Repeat for each image -->
+                <div class="aspect-w-1 aspect-h-1 border hover:border-black cursor-pointer rounded-lg overflow-hidden">
+                    <img src="https://product.hstatic.net/200000475003/product/26_fac091dc78084a65ad67a4c16b448eb5_master.png"
+                        alt="Product thumbnail" class="w-full h-full object-center object-cover">
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Product Info -->
+        <div class="mt-8 lg:mt-0 lg:ml-8">
+            <h1 class="text-2xl font-bold text-gray-900 mb-4">PRODUCT_NAME</h1>
+
+            <div class="flex items-center space-x-4 mb-6">
+                <span class="text-sm text-gray-600">Mã sản phẩm: PRODUCT_CODE</span>
+                <span class="text-sm text-gray-600">Thương hiệu: BRAND_NAME</span>
+            </div>
+
+            <div class="text-2xl font-bold text-red-600 mb-8">
+                PRICEđ
+            </div>
+
+            <!-- Size Selector -->
+            <div class="mb-6">
+                <select
+                    class="w-full p-3 border rounded-lg appearance-none bg-white focus:outline-none focus:ring-2 focus:ring-black">
+                    <option value="">Choose Your Size</option>
+                    <!-- Repeat for each size -->
+                    <option value="SIZE_VALUE">S</option>
+                    <option value="SIZE_VALUE">M</option>
+                    <option value="SIZE_VALUE">L</option>
+                    <option value="SIZE_VALUE">XL</option>
+                </select>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex space-x-4 mb-8">
+                <button class="bg-[#3B5998] text-white rounded-full p-3 flex items-center justify-center w-12 h-12">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm3 5.5h-2c-.311 0-.5.189-.5.5v2h2.5l-.5 2h-2v6h-2v-6H8v-2h2V7.5C10 6.122 11.122 5 12.5 5h2.5v2.5z" />
+                    </svg>
+                </button>
+                <button class="flex-1 bg-black text-white py-3 px-6 rounded-lg hover:bg-gray-800 transition-colors">
+                    THÊM VÀO GIỎ
+                </button>
+            </div>
+
+            <!-- Product Information -->
+            <div class="border-t pt-8">
+                <button class="flex items-center justify-between w-full text-left">
+                    <span class="text-lg font-medium">THÔNG TIN SẢN PHẨM</span>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+
+                <div class="mt-4 space-y-4 text-gray-600">
+                    <div class="flex items-start space-x-2">
+                        <svg class="w-5 h-5 text-blue-500 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+                        </svg>
+                        <span>Authentic product 100%</span>
+                    </div>
+                    <div class="flex items-start space-x-2">
+                        <svg class="w-5 h-5 text-blue-500 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+                        </svg>
+                        <span>Free product exchange within 03 days of purchase (applies to products of the same or
+                            higher value)</span>
+                    </div>
+                    <p class="text-sm italic mt-4">
+                        *Note: returned products must be in original packaging and unused.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

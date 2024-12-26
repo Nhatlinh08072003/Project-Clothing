@@ -21,7 +21,10 @@ public class ProductController : Controller
     {
         return View();
     }
-  
+  public IActionResult DetailProduct()
+    {
+        return View();
+    }
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

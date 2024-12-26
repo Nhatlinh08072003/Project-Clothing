@@ -75,4 +75,9 @@ app.MapControllerRoute(
     pattern: "/cart",
     defaults: new { controller = "Cart", action = "Index" }
 );
+app.MapControllerRoute(
+    name: "DetailProduct",
+    pattern: "/detailproduct",
+    defaults: new { controller = "Product", action = "DetailProduct" }
+);
 app.Run();
