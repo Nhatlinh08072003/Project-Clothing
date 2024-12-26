@@ -4,28 +4,38 @@ using Project_Clothing.Models;
 
 namespace Project_Clothing.Controllers;
 
-public class HomeController : Controller
+public class AccountController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private readonly ILogger<AccountController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    public AccountController(ILogger<AccountController> logger)
     {
         _logger = logger;
     }
 
-    public IActionResult Index()
+    public IActionResult Login()
     {
         return View();
     }
- public IActionResult Auction()
+
+    public IActionResult Register()
     {
         return View();
     }
-    public IActionResult NewMerch()
+      public IActionResult ForgotPassword()
     {
         return View();
     }
-    public IActionResult Contact()
+        public IActionResult ChangePassword()
+    {
+        return View();
+    }
+   public IActionResult ProfileUser()
+    {
+        return View();
+    }
+    
+   public IActionResult PurchaseHistory()
     {
         return View();
     }

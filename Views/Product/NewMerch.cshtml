@@ -1,0 +1,135 @@
+@{
+    ViewData["Title"] = "New Merch";
+}
+
+<body class="bg-gray-50">
+    <div class="max-w-7xl mt-[150px] mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Header -->
+        <div class="py-8">
+            <h1 class="text-3xl font-bold text-gray-900">Sản phẩm mới thêm</h1>
+        </div>
+
+        <!-- Search and Filter Bar -->
+        <div class="flex flex-col sm:flex-row gap-4 mb-8">
+            <div class="relative flex-1">
+                <input type="text" placeholder="Tìm kiếm sản phẩm..."
+                    class="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-3 top-2.5 h-5 w-5 text-gray-400"
+                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+            </div>
+            <button class="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-lg hover:bg-gray-200">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                </svg>
+                <span>Bộ lọc</span>
+            </button>
+        </div>
+
+        <!-- Filter Panel -->
+        <div class="mb-8 p-6 bg-white border rounded-lg shadow-sm">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Price Range -->
+                <div>
+                    <h3 class="font-medium mb-3">Khoảng giá</h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded text-blue-500">
+                            <span class="ml-2">Dưới 200.000đ</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded text-blue-500">
+                            <span class="ml-2">200.000đ - 500.000đ</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded text-blue-500">
+                            <span class="ml-2">Trên 500.000đ</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Categories -->
+                <div>
+                    <h3 class="font-medium mb-3">Danh mục</h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded text-blue-500">
+                            <span class="ml-2">Áo</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded text-blue-500">
+                            <span class="ml-2">Quần</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded text-blue-500">
+                            <span class="ml-2">Phụ kiện</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Size -->
+                <div>
+                    <h3 class="font-medium mb-3">Kích cỡ</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <button class="px-4 py-2 border rounded-md hover:bg-gray-100">S</button>
+                        <button class="px-4 py-2 border rounded-md hover:bg-gray-100">M</button>
+                        <button class="px-4 py-2 border rounded-md hover:bg-gray-100">L</button>
+                        <button class="px-4 py-2 border rounded-md hover:bg-gray-100">XL</button>
+                        <button class="px-4 py-2 border rounded-md hover:bg-gray-100">XXL</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <!-- Product Card -->
+            <div class="group">
+                <div class="aspect-square w-full overflow-hidden rounded-lg bg-gray-200">
+                    <img src="/api/placeholder/300/300" alt="Áo thun basic"
+                        class="h-full w-full object-cover object-center group-hover:opacity-75">
+                </div>
+                <div class="mt-4 space-y-1">
+                    <h3 class="text-sm text-gray-700">Áo thun basic</h3>
+                    <p class="font-medium text-gray-900">199.000đ</p>
+                </div>
+            </div>
+
+            <!-- More Product Cards -->
+            <div class="group">
+                <div class="aspect-square w-full overflow-hidden rounded-lg bg-gray-200">
+                    <img src="/api/placeholder/300/300" alt="Quần jean nam"
+                        class="h-full w-full object-cover object-center group-hover:opacity-75">
+                </div>
+                <div class="mt-4 space-y-1">
+                    <h3 class="text-sm text-gray-700">Quần jean nam</h3>
+                    <p class="font-medium text-gray-900">499.000đ</p>
+                </div>
+            </div>
+
+            <div class="group">
+                <div class="aspect-square w-full overflow-hidden rounded-lg bg-gray-200">
+                    <img src="/api/placeholder/300/300" alt="Áo khoác denim"
+                        class="h-full w-full object-cover object-center group-hover:opacity-75">
+                </div>
+                <div class="mt-4 space-y-1">
+                    <h3 class="text-sm text-gray-700">Áo khoác denim</h3>
+                    <p class="font-medium text-gray-900">799.000đ</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Load More Button -->
+        <div class="text-center pb-12">
+            <button class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                Xem thêm sản phẩm
+            </button>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,35 +1,35 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE html>
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Homepage</title>
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <title>Weathered - Fashion Store</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-gray-50">
+<body class="bg-white">
     <!-- Hero Section with Image Slider -->
 
-    <div x-data="imageSlider()" class="relative w-full h-[700px] overflow-hidden">
-        <div class="absolute inset-0 flex transition-transform duration-500"
+    <div x-data="imageSlider()" class="relative w-screen h-[710px]  overflow-hidden">
+        <div class="absolute inset-0 flex transition-transform  duration-500"
             :style="`transform: translateX(-${currentIndex * 100}%)`">
             <template x-for="(image, index) in images" :key="index">
-                <div class="relative w-full h-full flex-shrink-0">
+                <div class="relative w-full mt-[40px] h-full flex-shrink-0">
                     <img :src="image.src" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
                         <div class="text-center text-white">
                             <h1 class="text-5xl font-bold mb-4" x-text="image.title"></h1>
                             <p class="text-xl mb-8" x-text="image.description"></p>
-                            <a :href="image.link"
-                                class="bg-white text-black px-8 py-3 rounded-full hover:bg-gray-100 transition">
-                                <span x-text="image.buttonText"></span>
-                            </a>
+                            <a :href="image.link" class="">
+
+                                <a href="/product"
+                                    class="bg-white text-black px-8 py-3 rounded-full hover:bg-gray-100 transition">
+                                    <span x-text="image.buttonText"></span>
+                                </a></a>
+
                         </div>
                     </div>
                 </div>
@@ -47,6 +47,7 @@
 
         <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
             <template x-for="(_, index) in images" :key="index">
+
                 <button x-on:click="currentIndex = index"
                     :class="currentIndex === index ? 'w-8 bg-white' : 'w-2 bg-white/60'"
                     class="h-2 rounded-full transition-all duration-300">
@@ -54,99 +55,168 @@
             </template>
         </div>
     </div>
-    <!-- Featured Products -->
-    <div class="new-arrivals mt-8">
-        <h2 class="text-2xl font-bold mb-4">NEW ARRIVALS</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="p-6 border">
-                <img src="https://www.millsvintageusa.com/cdn/shop/files/AB4682B5-FD31-4A1D-86BE-F3BEA6704B76.jpg?v=1735060082&width=1946"
-                    alt="Vintage 90's AFI East Bay Hardcore T-Shirt" class="w-full h-auto rounded-md mb-4">
-                <h3 class="text-lg font-semibold">Vintage 90's AFI East Bay Hardcore T-Shirt</h3>
-                <p class="text-gray-700">5,165,000 VND</p>
-                <button class="bg-gray-500 text-white py-2 px-4 rounded mt-4">Add to cart</button>
+
+    <!-- New Arrivals Section -->
+    <div class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl font-bold mb-8 text-center">NEW ARRIVALS</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Product Cards -->
+            <div class="group">
+                <div class="aspect-square overflow-hidden">
+                    <img src="https://www.millsvintageusa.com/cdn/shop/files/AB4682B5-FD31-4A1D-86BE-F3BEA6704B76.jpg?v=1735060082&width=1946"
+                        alt="Product" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                </div>
+                <div class="mt-4 space-y-2">
+                    <h3 class="text-lg font-medium">Vintage 90's AFI East Bay Hardcore T-Shirt</h3>
+                    <p class="text-gray-900">5,165,000 VND</p>
+                    <button class="w-full bg-black text-white py-3 hover:bg-gray-800 transition">Add to Cart</button>
+                </div>
             </div>
-            <div class="p-6 border">
-                <img src="https://www.millsvintageusa.com/cdn/shop/files/F1E089FA-780F-46B8-B109-E93E987C8425.jpg?v=1735059996&width=1946"
-                    alt="Vintage AFI East Bay Hardcore Hoodie" class="w-full h-auto rounded-md mb-4">
-                <h3 class="text-lg font-semibold">Vintage AFI East Bay Hardcore Hoodie</h3>
-                <p class="text-gray-700">4,906,000 VND</p>
-                <button class="bg-gray-500 text-white py-2 px-4 rounded mt-4">Add to cart</button>
+            <div class="group">
+                <div class="aspect-square overflow-hidden">
+                    <img src="https://www.millsvintageusa.com/cdn/shop/files/AB4682B5-FD31-4A1D-86BE-F3BEA6704B76.jpg?v=1735060082&width=1946"
+                        alt="Product" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                </div>
+                <div class="mt-4 space-y-2">
+                    <h3 class="text-lg font-medium">Vintage 90's AFI East Bay Hardcore T-Shirt</h3>
+                    <p class="text-gray-900">5,165,000 VND</p>
+                    <button class="w-full bg-black text-white py-3 hover:bg-gray-800 transition">Add to Cart</button>
+                </div>
             </div>
-            <div class="p-6 border">
-                <img src="https://www.millsvintageusa.com/cdn/shop/files/8390BDFA-0CCC-4698-82F3-983C52033D53.jpg?v=1735059909&width=1946"
-                    alt="Vintage 1998 Sick Of It All Australian Tour T-Shirt" class="w-full h-auto rounded-md mb-4">
-                <h3 class="text-lg font-semibold">Vintage 1998 Sick Of It All Australian Tour T-Shirt</h3>
-                <p class="text-gray-700">4,390,000 VND</p>
-                <button class="bg-gray-500 text-white py-2 px-4 rounded mt-4">Add to cart</button>
+            <div class="group">
+                <div class="aspect-square overflow-hidden">
+                    <img src="https://www.millsvintageusa.com/cdn/shop/files/AB4682B5-FD31-4A1D-86BE-F3BEA6704B76.jpg?v=1735060082&width=1946"
+                        alt="Product" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                </div>
+                <div class="mt-4 space-y-2">
+                    <h3 class="text-lg font-medium">Vintage 90's AFI East Bay Hardcore T-Shirt</h3>
+                    <p class="text-gray-900">5,165,000 VND</p>
+                    <button class="w-full bg-black text-white py-3 hover:bg-gray-800 transition">Add to Cart</button>
+                </div>
             </div>
-            <div class="border p-6">
-                <img src="https://www.millsvintageusa.com/cdn/shop/files/E91EB852-59C3-45B5-A3A4-5F3486B0578E.jpg?v=1735059742&width=1946"
-                    alt="Vintage 1999 Buried Alive The Death Of Your Perfect World T-Shirt"
-                    class="w-full h-auto rounded-md mb-4">
-                <h3 class="text-lg font-semibold">Vintage 1999 Buried Alive The Death Of Your Perfect World T-Shirt</h3>
-                <p class="text-gray-700">2,324,000 VND</p>
-                <p class="text-red-600 font-bold mt-2">Sold out</p>
+            <div class="group">
+                <div class="aspect-square overflow-hidden">
+                    <img src="https://www.millsvintageusa.com/cdn/shop/files/AB4682B5-FD31-4A1D-86BE-F3BEA6704B76.jpg?v=1735060082&width=1946"
+                        alt="Product" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                </div>
+                <div class="mt-4 space-y-2">
+                    <h3 class="text-lg font-medium">Vintage 90's AFI East Bay Hardcore T-Shirt</h3>
+                    <p class="text-gray-900">5,165,000 VND</p>
+                    <button class="w-full bg-black text-white py-3 hover:bg-gray-800 transition">Add to Cart</button>
+                </div>
             </div>
+            <!-- Repeat similar structure for other products -->
         </div>
-        <div class="mt-6 text-center">
-            <a href="/products/new-arrivals" class="text-blue-600 hover:underline">View all</a>
+        <div class="text-center mt-10">
+            <a href="/product" class="inline-block border-b-2 border-black hover:border-gray-500 transition">
+                View All Products
+            </a>
         </div>
     </div>
 
-    <!-- Featured Categories -->
-    <div class="max-w-9xl mx-auto px-4 py-16">
-        <h2 class="text-3xl font-bold text-center mb-12">SHOP BY CATEGORY</h2>
-        <div class="grid grid-cols-1 mx-auto  md:grid-cols-3 gap-8">
-            <div class="bg-gray-100 mt-[50px]">
-                <h1 class="font-semibold text-3xl">
-                    Welcome to Weathered
-                </h1>
-                <p class="mt-2 text-lg">
-                    Tại Weathered, chúng tôi tái định nghĩa phong cách thời trang vượt thời gian với bộ sưu tập kết hợp
-                    sự mạnh mẽ và thanh lịch hiện đại.
-                    Thiết kế của chúng tôi tập trung vào sự tinh xảo và chất lượng cao, với các sản phẩm đa năng phù hợp
-                    cho mọi mùa trong năm.
-                    Từ những chiếc áo khoác đặc trưng, áo len thoải mái, đến quần âu được may đo kỹ lưỡng và trang phục
-                    ngoài trời sang trọng, Weathered mang đến những sản phẩm bền bỉ với thời gian.
-                    Khám phá phong cách tinh tế cùng Weathered thương hiệu tôn vinh độ bền, sự chân thực và vẻ đẹp của
-                    sự giản đơn.
-                </p>
-            </div>
-            <div
-                class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
-                <img src="~/images/men.jpg"
-                    class="w-[500px] h-[700px] object-cover transform group-hover:scale-110 transition duration-500">
-                <div
-                    class="absolute inset-0 hover:bg-black/50 flex items-center justify-center opacity-100 transition duration-300">
-                    <a href="#" class="text-white text-3xl font-semibold hover:underline">SHOP MENSWEAR </a>
+    <!-- Categories Section -->
+    <div class="bg-gray-100 py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">SHOP BY CATEGORY</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- About Section -->
+                <div class="bg-white p-8">
+                    <h3 class="text-2xl font-bold mb-4">Welcome to Weathered</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Tại Weathered, chúng tôi tái định nghĩa phong cách thời trang vượt thời gian với bộ sưu tập
+                        kết hợp sự mạnh mẽ và thanh lịch hiện đại.
+                    </p>
+                </div>
+                <!-- Category Cards -->
+                <div class="group relative aspect-[3/4] overflow-hidden">
+                    <img src="~/images/men.jpg" alt="Menswear"
+                        class="w-full h-[700px] object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+                        <a href="#" class="text-white text-2xl font-bold hover:underline">SHOP MENSWEAR</a>
+                    </div>
+                </div>
+                <div class="group relative aspect-[3/4] overflow-hidden">
+                    <img src="~/images/women.jpg" alt="Womenswear"
+                        class="w-full h-[700px] object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+                        <a href="#" class="text-white text-2xl font-bold hover:underline">SHOP WOMENSWEAR</a>
+                    </div>
                 </div>
             </div>
-            <div
-                class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
-                <img src="~/images/women.jpg"
-                    class="w-[500px] h-[700px] object-cover transform group-hover:scale-110 transition duration-500">
-                <div
-                    class="absolute inset-0 hover:bg-black/50 flex items-center justify-center opacity-100 transition duration-300">
-                    <a href="#" class="text-white text-3xl font-semibold hover:underline">SHOP WOMENSWEAR </a>
-                </div>
-            </div>
-
-
         </div>
     </div>
 
+    <!-- Designers Section -->
+    <section class="bg-black w-screen text-white p-8 h-[580px]">
+        <h2 class="text-3xl font-bold">FEATURED DESIGNERS</h2>
+        <p class="mt-4 max-w-2xl text-sm">From luxury powerhouses to emerging designers, experience the creativity and
+            diversity of over 500 brands on Weathered.</p>
 
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 mt-[20px]">
+            <div class="text-center flex flex-col items-center">
+                <img src="https://image-raw.reversible.com/logo/designer/jacquemus-width200" alt="Jacquemus"
+                    class="w-[100px] h-auto rounded-full mb-4" />
+                <p>JACQUEMUS</p>
+            </div>
+            <div class="text-center flex flex-col items-center">
+                <img src="https://image-raw.reversible.com/logo/designer/valentino-width200" alt="Valentino"
+                    class="w-[100px] h-auto rounded-full mb-4" />
+                <p>Valentino</p>
+            </div>
+            <div class="text-center flex flex-col items-center">
+                <img src="https://image-raw.reversible.com/logo/designer/saint-laurent-width200" alt="Saint Laurent"
+                    class="w-[100px] h-auto rounded-full mb-4" />
+                <p>SAINT LAURENT</p>
+            </div>
+            <div class="text-center flex flex-col items-center">
+                <img src="https://image-raw.reversible.com/logo/designer/miu-miu-width200" alt="Miu Miu"
+                    class="w-[100px] h-auto rounded-full mb-4" />
+                <p>Miu Miu</p>
+            </div>
+            <div class="text-center flex flex-col items-center">
+                <img src="https://image-raw.reversible.com/logo/designer/loewe-width200" alt="Loewe"
+                    class="w-[100px] h-auto rounded-full mb-4" />
+                <p>Loewe</p>
+            </div>
+            <div class="text-center flex flex-col items-center">
+                <img src="https://image-raw.reversible.com/logo/designer/dries-van-noten-width200" alt="Dries Van Noten"
+                    class="w-[100px] h-auto rounded-full mb-4" />
+                <p>Dries Van Noten</p>
+            </div>
+            <div class="text-center flex flex-col items-center">
+                <img src="https://image-raw.reversible.com/logo/designer/balenciaga-width200" alt="Balenciaga"
+                    class="w-[100px] h-auto rounded-full mb-4" />
+                <p>BALENCIAGA</p>
+            </div>
+            <div class="text-center flex flex-col items-center">
+                <img src="https://image-raw.reversible.com/logo/designer/gucci-width200" alt="Gucci"
+                    class="w-[100px] h-auto rounded-full mb-4" />
+                <p>GUCCI</p>
+            </div>
+            <div class="text-center flex flex-col items-center">
+                <img src="https://image-raw.reversible.com/logo/designer/lemaire-width200" alt="Lemaire"
+                    class="w-[100px] h-auto rounded-full mb-4" />
+                <p>Lemaire</p>
+            </div>
+            <div class="text-center flex flex-col items-center">
+                <img src="https://image-raw.reversible.com/logo/designer/zimmermann-width200" alt="Zimmermann"
+                    class="w-[100px] h-auto rounded-full mb-4" />
+                <p>Zimmermann</p>
+            </div>
+        </div>
+    </section>
 
     <!-- Newsletter Section -->
     <div class="bg-gray-100 py-16">
-        <div class="max-w-7xl mx-auto px-4 text-center">
+        <div class="container mx-auto px-4 max-w-2xl text-center">
             <h2 class="text-3xl font-bold mb-4">Subscribe to Our Newsletter</h2>
             <p class="text-gray-600 mb-8">Stay updated with our latest products and offers</p>
-            <form class="max-w-md mx-auto flex gap-4">
+            <form class="flex gap-4">
                 <input type="email" placeholder="Enter your email"
-                    class="flex-1 px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <button type="submit"
-                    class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">Subscribe</button>
+                    class="flex-1 px-4 py-3 border focus:outline-none focus:ring-2 focus:ring-black">
+                <button type="submit" class="bg-black text-white px-8 py-3 hover:bg-gray-800 transition">
+                    Subscribe
+                </button>
             </form>
         </div>
     </div>

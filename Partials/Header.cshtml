@@ -10,11 +10,11 @@
 
 <body class="bg-gray-50">
     <header class="bg-white shadow-lg fixed w-full top-0 z-50">
-        <nav class="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8" aria-label="Global">
+        <nav class="mx-auto flex max-w-7xl items-center justify-between  lg:px-8" aria-label="Global">
             <div class="flex lg:flex-1">
-                <a href="#" class="-m-1.5 p-1.5">
+                <a href="/" class="">
                     <span class="sr-only">Your Company</span>
-                    <img src="~/images/logo.png" alt="Logo" class="h-[100px] w-[100px]">
+                    <img src="~/images/logo.png" alt="Logo" class="h-[150px] w-[150px]">
                 </a>
             </div>
 
@@ -87,9 +87,12 @@
                     </div>
                 </div>
 
-                <a href="#" class="text-gray-900 text-base font-medium hover:text-blue-500 transition">Features</a>
-                <a href="#" class="text-gray-900 text-base font-medium hover:text-blue-500 transition">Marketplace</a>
-                <a href="#" class="text-gray-900 text-base font-medium hover:text-blue-500 transition">Company</a>
+                <a href="/newmerch" class="text-gray-900 text-base font-medium hover:text-blue-500 transition">New
+                    Merch</a>
+                <a href="/auction"
+                    class="text-gray-900 text-base font-medium hover:text-blue-500 transition">Auction</a>
+                <a href="/contact"
+                    class="text-gray-900 text-base font-medium hover:text-blue-500 transition">Contact</a>
             </div>
 
             <div class="hidden lg:flex lg:flex-1 lg:justify-end items-center gap-4">
@@ -99,12 +102,27 @@
                 <a href="#" class="text-gray-500 hover:text-gray-900 transition">
                     <i class="fas fa-shopping-cart text-xl"></i>
                 </a>
-                <a href="#" class="text-gray-900 font-medium hover:text-blue-500 transition">
+                <a href="/login" class="text-gray-900 font-medium hover:text-blue-500 transition">
                     Log in <span aria-hidden="true">&rarr;</span>
                 </a>
             </div>
         </nav>
-
+        <div id="notification-dropdown" class="hidden absolute right-0 mt-2 w-80 bg-white shadow-lg rounded-lg z-50">
+            <ul class="divide-y divide-gray-200">
+                <li class="p-4">
+                    <p class="text-sm text-gray-700">Bạn có thông báo mới từ hệ thống.</p>
+                    <span class="text-xs text-gray-500">1 phút trước</span>
+                </li>
+                <li class="p-4">
+                    <p class="text-sm text-gray-700">Đơn hàng #1234 đã được giao thành công.</p>
+                    <span class="text-xs text-gray-500">10 phút trước</span>
+                </li>
+                <li class="p-4">
+                    <p class="text-sm text-gray-700">Khuyến mãi mới đang chờ bạn khám phá!</p>
+                    <span class="text-xs text-gray-500">30 phút trước</span>
+                </li>
+            </ul>
+        </div>
         <!-- Backdrop -->
         <div class="hidden fixed inset-0 bg-black bg-opacity-50 z-40" id="backdrop"></div>
 
@@ -146,7 +164,7 @@
                 <a href="#" class="text-gray-500 hover:text-gray-900 transition">
                     <i class="fas fa-bell text-xl"></i>
                 </a>
-                <a href="#" class="text-gray-500 hover:text-gray-900 transition">
+                <a href="/cart" class="text-gray-500 hover:text-gray-900 transition">
                     <i class="fas fa-shopping-cart text-xl"></i>
                 </a>
                 <a href="#" class="text-gray-900 font-medium hover:text-blue-500 transition">
@@ -195,6 +213,28 @@
         mobileMenuButton?.addEventListener('click', openMobileMenu);
         closeMenuButton?.addEventListener('click', closeMobileMenu);
         backdrop?.addEventListener('click', closeMobileMenu);
+
+
+
+        ///icon chuong
+        const notificationButton = document.querySelector('.fa-bell'); // Chọn icon chuông
+        const notificationDropdown = document.getElementById('notification-dropdown');
+        let isNotificationOpen = false;
+
+        // Toggle dropdown
+        notificationButton?.addEventListener('click', () => {
+            isNotificationOpen = !isNotificationOpen;
+            notificationDropdown.classList.toggle('hidden', !isNotificationOpen);
+        });
+
+        // Ẩn dropdown khi nhấn bên ngoài
+        document.addEventListener('click', (event) => {
+            if (!notificationButton.contains(event.target) && !notificationDropdown.contains(event.target)) {
+                notificationDropdown.classList.add('hidden');
+                isNotificationOpen = false;
+            }
+        });
+
     </script>
 </body>
 

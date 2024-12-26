@@ -4,31 +4,20 @@ using Project_Clothing.Models;
 
 namespace Project_Clothing.Controllers;
 
-public class HomeController : Controller
+public class AdminController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private readonly ILogger<AdminController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    public AdminController(ILogger<AdminController> logger)
     {
         _logger = logger;
     }
-
-    public IActionResult Index()
+    
+ public IActionResult Index()
     {
         return View();
     }
- public IActionResult Auction()
-    {
-        return View();
-    }
-    public IActionResult NewMerch()
-    {
-        return View();
-    }
-    public IActionResult Contact()
-    {
-        return View();
-    }
+  
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
