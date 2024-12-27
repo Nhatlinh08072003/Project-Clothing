@@ -1,27 +1,31 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Project_Clothing.Models;
-
-public class RegisterDTO
+namespace Project_Clothing.Models
 {
-    [Required(ErrorMessage = "Email is required")]
-    [EmailAddress(ErrorMessage = "Invalid email format")]
-    public string Email { get; set; } = null!;
+    public class RegisterDTO
+    {
+        [Required(ErrorMessage = "Email là bắt buộc")]
+        [EmailAddress(ErrorMessage = "Email không hợp lệ")]
+        public string Email { get; set; }
 
-    [Required(ErrorMessage = "Phone number is required")]
-    [Phone(ErrorMessage = "Invalid phone number format")]
-    public string Phone { get; set; } = null!;
+        [Required(ErrorMessage = "Số điện thoại là bắt buộc")]
+        [Phone(ErrorMessage = "Số điện thoại không hợp lệ")]
+        public string Phone { get; set; }
 
-    [Required(ErrorMessage = "Address is required")]
-    public string Address { get; set; } = null!;
+        [Required(ErrorMessage = "Địa chỉ là bắt buộc")]
+        public string Address { get; set; }
 
-    [Required(ErrorMessage = "Password is required")]
-    [MinLength(6, ErrorMessage = "Password must be at least 6 characters")]
-    public string Password { get; set; } = null!;
+        [Required(ErrorMessage = "Mật khẩu là bắt buộc")]
+        [StringLength(100, MinimumLength = 6, ErrorMessage = "Mật khẩu phải có ít nhất 6 ký tự")]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
 
-    [Compare("Password", ErrorMessage = "Passwords do not match")]
-    public string ConfirmPassword { get; set; } = null!;
+        [Required(ErrorMessage = "Vui lòng xác nhận mật khẩu")]
+        [Compare("Password", ErrorMessage = "Mật khẩu xác nhận không khớp")]
+        [DataType(DataType.Password)]
+        public string ConfirmPassword { get; set; }
 
-    [Required(ErrorMessage = "You must accept the terms and conditions")]
-    public bool Terms { get; set; }
+        [Required(ErrorMessage = "Vui lòng chấp nhận điều khoản sử dụng")]
+        public bool Terms { get; set; }
+    }
 }
