@@ -95,17 +95,34 @@
                     class="text-gray-900 text-base font-medium hover:text-blue-500 transition">Contact</a>
             </div>
 
-            <div class="hidden lg:flex lg:flex-1 lg:justify-end items-center gap-4">
-                <a href="#" class="text-gray-500 hover:text-gray-900 transition">
-                    <i class="fas fa-bell text-xl"></i>
-                </a>
-                <a href="#" class="text-gray-500 hover:text-gray-900 transition">
-                    <i class="fas fa-shopping-cart text-xl"></i>
-                </a>
-                <a href="/login" class="text-gray-900 font-medium hover:text-blue-500 transition">
-                    Log in <span aria-hidden="true">&rarr;</span>
-                </a>
-            </div>
+    <div class="hidden lg:flex lg:flex-1 lg:justify-end items-center gap-4">
+    <a href="#" class="text-gray-500 hover:text-gray-900 transition">
+        <i class="fas fa-bell text-xl"></i>
+    </a>
+    <a href="#" class="text-gray-500 hover:text-gray-900 transition">
+        <i class="fas fa-shopping-cart text-xl"></i>
+    </a>
+ 
+@if (User.Identity.IsAuthenticated)  
+{  
+    <span class="text-gray-500 font-medium flex gap-1 items-center">  
+        <p class="text-black">Welcome!</p>  
+        @User.FindFirst("Phone")?.Value  
+        <form asp-controller="Login" asp-action="Logout" method="post">  
+            <button type="submit" class="btn btn-danger">Logout</button>  
+        </form>  
+    </span>  
+}  
+else  
+{  
+    <a href="/login" class="text-gray-900 font-medium hover:text-blue-500 transition">  
+        Log in <span aria-hidden="true">&rarr;</span>  
+    </a>  
+}
+
+
+
+
         </nav>
         <div id="notification-dropdown" class="hidden absolute right-0 mt-2 w-80 bg-white shadow-lg rounded-lg z-50">
             <ul class="divide-y divide-gray-200">
@@ -160,17 +177,24 @@
                     class="block text-base font-semibold text-gray-900 hover:bg-gray-100 p-3 rounded-lg">Company</a>
             </div>
 
-            <div class="mt-8 flex items-center gap-4">
-                <a href="#" class="text-gray-500 hover:text-gray-900 transition">
-                    <i class="fas fa-bell text-xl"></i>
-                </a>
-                <a href="/cart" class="text-gray-500 hover:text-gray-900 transition">
-                    <i class="fas fa-shopping-cart text-xl"></i>
-                </a>
-                <a href="#" class="text-gray-900 font-medium hover:text-blue-500 transition">
-                    Log in <span aria-hidden="true">&rarr;</span>
-                </a>
-            </div>
+           @if (User.Identity.IsAuthenticated)  
+{  
+    <span class="text-gray-500 font-medium flex gap-1 items-center">  
+        <p class="text-black">Welcome!</p>  
+        @User.FindFirst("Phone")?.Value  
+        <form asp-controller="Login" asp-action="Logout" method="post" class="inline-block">  
+            <button type="submit" class="text-gray-900 font-medium hover:text-blue-500 transition ml-4">  
+                Log out  
+            </button>  
+        </form>  
+    </span>  
+}  
+else  
+{  
+    <a href="/login" class="text-gray-900 font-medium hover:text-blue-500 transition">  
+        Log in <span aria-hidden="true">&rarr;</span>  
+    </a>  
+}
         </div>
     </header>
 

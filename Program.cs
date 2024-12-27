@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Project_Clothing.Models;
 
@@ -10,6 +11,21 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<WeatheredContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Add authentication
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)  
+    .AddCookie(options =>  
+    {  
+         options.LoginPath = "/Login/Dangnhap"; // Set the login page path
+         options.LogoutPath = "/Login/logout"; // Set the logout path
+         options.Cookie.Name = "YourAppCookie";  
+         options.Cookie.HttpOnly = true;  
+         options.Cookie.SecurePolicy = CookieSecurePolicy.Always;  
+         options.SlidingExpiration = true;  
+         options.ExpireTimeSpan = TimeSpan.FromMinutes(30);  
+    });  
+
+builder.Services.AddAuthorization();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -19,8 +35,8 @@ if (!app.Environment.IsDevelopment())
 }
 app.UseStaticFiles();
 app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
