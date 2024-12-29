@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Security.Claims;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Project_Clothing.Controllers
 {
@@ -34,7 +35,7 @@ namespace Project_Clothing.Controllers
         {
             if (ModelState.IsValid)
             {
-                var hashedPassword = HashPassword(model.Password);
+                var hashedPassword = model.Password;
                 var user = await _context.Users
                     .FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == hashedPassword);
 
@@ -89,21 +90,84 @@ namespace Project_Clothing.Controllers
             // Chuyển hướng về trang chủ hoặc trang khác
             return RedirectToAction("Index", "Home");
         }
- public IActionResult Resetpassword()
-        {
-            return View();
-        }
+
         // Password hashing function
-        private string HashPassword(string password)
-        {
-            using (var sha256 = SHA256.Create())
-            {
-                var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-                return Convert.ToBase64String(hashedBytes);
-            }
-        }
+        // private string HashPassword(string password)
+        // {
+        //     using (var sha256 = SHA256.Create())
+        //     {
+        //         var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+        //         return Convert.ToBase64String(hashedBytes);
+        //     }
+        // }
+// GET: Reset Password
+public IActionResult ResetPassword()
+{
+    return View();
+}
 
+[HttpPost]
+[ValidateAntiForgeryToken]
+[Authorize]
+public async Task<IActionResult> ResetPassword(ResetPasswordDTO model)
+{
+    if (!ModelState.IsValid)
+    {
+        return View(model);
+    }
 
+    var userId = User.FindFirst("UserId")?.Value;
+    if (string.IsNullOrEmpty(userId))
+    {
+        return RedirectToAction("Login");
+    }
+
+    var user = await _context.Users.FirstOrDefaultAsync(u => u.UserId == int.Parse(userId));
+    if (user == null)
+    {
+        return NotFound();
+    }
+
+    // Add logging
+    var hashedCurrentPassword =model.CurrentPassword;
+    _logger.LogInformation($"Current Password Hash: {hashedCurrentPassword}");
+    _logger.LogInformation($"Stored Password Hash: {user.Password}");
+
+    // Verify current password
+    if (user.Password != hashedCurrentPassword)
+    {
+        ModelState.AddModelError("CurrentPassword", "Mật khẩu hiện tại không đúng");
+        return View(model);
+    }
+
+    try
+    {
+        var newHashedPassword = model.NewPassword;
+        _logger.LogInformation($"New Password Hash: {newHashedPassword}");
+
+        // Update password
+        user.Password = newHashedPassword;
+        
+        // Try both approaches
+        _context.Users.Update(user);
+        // AND
+        _context.Entry(user).State = EntityState.Modified;
+        
+        await _context.SaveChangesAsync();
+
+        // Sign out user
+        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+        TempData["SuccessMessage"] = "Mật khẩu đã được thay đổi thành công. Vui lòng đăng nhập lại.";
+        return RedirectToAction("Login");
+    }
+    catch (Exception ex)
+    {
+        _logger.LogError($"Error updating password: {ex.Message}");
+        ModelState.AddModelError("", "Có lỗi xảy ra khi cập nhật mật khẩu");
+        return View(model);
+    }
+}
  public IActionResult ForgotPassword()
     {
         return View();
