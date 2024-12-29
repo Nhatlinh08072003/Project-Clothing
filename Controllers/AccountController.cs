@@ -10,25 +10,27 @@ using System.Diagnostics;
 
 namespace Project_Clothing.Controllers
 {
-    public class LoginController : Controller
+    public class AccountController : Controller
     {
-        private readonly ILogger<LoginController> _logger;
+        private readonly ILogger<AccountController> _logger;
         private readonly WeatheredContext _context;
 
-        public LoginController(ILogger<LoginController> logger, WeatheredContext context)
+        public AccountController(ILogger<AccountController> logger, WeatheredContext context)
         {
             _logger = logger;
             _context = context;
         }
 
-        public IActionResult Dangnhap()
+        // View for Login
+        public IActionResult Login()
         {
             return View();
         }
 
+        // POST action for Login
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Dangnhap(LoginDTO model)
+        public async Task<IActionResult> Login(LoginDTO model)
         {
             if (ModelState.IsValid)
             {
@@ -75,15 +77,23 @@ namespace Project_Clothing.Controllers
             return View(model);
         }
 
-[HttpPost]
-public async Task<IActionResult> Logout()
-{
-    await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-    return RedirectToAction("Dangnhap", "Login"); // Redirect to login page after logout
-}
+     
 
+        // POST action for Logout
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            // Đăng xuất khỏi hệ thống
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
-
+            // Chuyển hướng về trang chủ hoặc trang khác
+            return RedirectToAction("Index", "Home");
+        }
+ public IActionResult Resetpassword()
+        {
+            return View();
+        }
+        // Password hashing function
         private string HashPassword(string password)
         {
             using (var sha256 = SHA256.Create())
@@ -93,6 +103,21 @@ public async Task<IActionResult> Logout()
             }
         }
 
+
+ public IActionResult ForgotPassword()
+    {
+        return View();
+    }
+ public IActionResult  PurchaseHistory()
+    {
+        return View();
+    }
+
+
+ public IActionResult Profile()
+    {
+        return View();
+    }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

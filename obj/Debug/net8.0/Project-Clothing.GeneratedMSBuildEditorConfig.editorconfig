@@ -34,6 +34,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFydGlhbHNcSGVhZGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Project-Clothing/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Project-Clothing/Views/Account/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Project-Clothing/Views/Account/PurchaseHistory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxQdXJjaGFzZUhpc3RvcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Project-Clothing/Views/Account/Resetpassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZXNldHBhc3N3b3JkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Project-Clothing/Views/Admin/NewMerch.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTmV3TWVyY2guY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -50,24 +66,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project-Clothing/Views/ChangePassword/DoiMatKhau.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhbmdlUGFzc3dvcmRcRG9pTWF0S2hhdS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/Project-Clothing/Views/Contact/Lienhe.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdFxMaWVuaGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Project-Clothing/Views/ForgotPassword/QuenMatKhau.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9yZ290UGFzc3dvcmRcUXVlbk1hdEtoYXUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/Project-Clothing/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Project-Clothing/Views/Login/Dangnhap.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cRGFuZ25oYXAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Project-Clothing/Views/Product/DetailProduct.cshtml]
@@ -80,14 +84,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Project-Clothing/Views/Product/NewMerch.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxOZXdNZXJjaC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Project-Clothing/Views/Profile/ThongTin.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxUaG9uZ1Rpbi5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Project-Clothing/Views/PurchaseHistory/Daugia.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVyY2hhc2VIaXN0b3J5XERhdWdpYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Project-Clothing/Views/Register/Dangki.cshtml]

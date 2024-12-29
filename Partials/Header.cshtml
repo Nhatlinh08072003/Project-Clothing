@@ -9,15 +9,20 @@
 </head>
 
 <body class="bg-gray-50">
+    <!-- Backdrop -->
+    <div id="backdrop" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
     <header class="bg-white shadow-lg fixed w-full top-0 z-50">
-        <nav class="mx-auto flex max-w-7xl items-center justify-between  lg:px-8" aria-label="Global">
+        <nav class="mx-auto flex max-w-7xl items-center justify-between lg:px-8" aria-label="Global">
+            <!-- ... Logo section remains the same ... -->
             <div class="flex lg:flex-1">
-                <a href="/" class="">
+                <a href="/" class="text-xl font-semibold">
                     <span class="sr-only">Your Company</span>
                     <img src="~/images/logo.png" alt="Logo" class="h-[150px] w-[150px]">
                 </a>
             </div>
 
+            <!-- Mobile menu button -->
             <div class="flex lg:hidden">
                 <button type="button" id="mobile-menu-button"
                     class="inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 hover:bg-gray-100 transition">
@@ -29,64 +34,10 @@
                 </button>
             </div>
 
+            <!-- Desktop Menu -->
             <div class="hidden lg:flex lg:gap-x-12">
-                <div class="relative">
-                    <button id="product-button"
-                        class=" relative flex items-center text-gray-900 text-base font-medium hover:text-blue-500 transition">
-                        Product
-                        <svg class="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                        </svg>
-                    </button>
-
-                    <div id="product-dropdown"
-                        class="absolute  hidden bg-white w-screen  max-w-4xl rounded-lg shadow-lg mt-2 z-50">
-                        <div class="p-6 grid grid-cols-5 gap-6 ">
-
-                            <div>
-                                <h3 class="text-lg font-semibold text-gray-800 mb-4">Pop</h3>
-                                <ul>
-                                    <li><a href="#" class="text-gray-600 hover:text-blue-500 transition">Rap Tees</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-semibold text-gray-800 mb-4">Electronic</h3>
-                                <ul>
-                                    <li><a href="#" class="text-gray-600 hover:text-blue-500 transition">Movies / TV
-                                            Shows</a></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-semibold text-gray-800 mb-4">Other</h3>
-                                <ul class="space-y-2">
-                                    <li><a href="#"
-                                            class="text-gray-600 hover:text-blue-500 transition">Skateboarding</a></li>
-                                    <li><a href="#" class="text-gray-600 hover:text-blue-500 transition">Video Games /
-                                            Comics</a></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-semibold text-gray-800 mb-4">Garments</h3>
-                                <ul class="space-y-2">
-                                    <li><a href="#" class="text-gray-600 hover:text-blue-500 transition">T-Shirts</a>
-                                    </li>
-                                    <li><a href="#" class="text-gray-600 hover:text-blue-500 transition">Longsleeve</a>
-                                    </li>
-                                    <li><a href="#" class="text-gray-600 hover:text-blue-500 transition">Hoodies /
-                                            Sweatshirts</a></li>
-                                    <li><a href="#" class="text-gray-600 hover:text-blue-500 transition">Hats</a></li>
-                                    <li><a href="#" class="text-gray-600 hover:text-blue-500 transition">Jackets</a>
-                                    </li>
-                                    <li><a href="#" class="text-gray-600 hover:text-blue-500 transition">Bottoms</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                <a href="/product"
+                    class="text-gray-900 text-base font-medium hover:text-blue-500 transition">Products</a>
                 <a href="/newmerch" class="text-gray-900 text-base font-medium hover:text-blue-500 transition">New
                     Merch</a>
                 <a href="/auction"
@@ -95,132 +46,154 @@
                     class="text-gray-900 text-base font-medium hover:text-blue-500 transition">Contact</a>
             </div>
 
-    <div class="hidden lg:flex lg:flex-1 lg:justify-end items-center gap-4">
-    <a href="#" class="text-gray-500 hover:text-gray-900 transition">
-        <i class="fas fa-bell text-xl"></i>
-    </a>
-    <a href="#" class="text-gray-500 hover:text-gray-900 transition">
-        <i class="fas fa-shopping-cart text-xl"></i>
-    </a>
- 
-@if (User.Identity.IsAuthenticated)  
-{  
-    <span class="text-gray-500 font-medium flex gap-1 items-center">  
-        <p class="text-black">Welcome!</p>  
-        @User.FindFirst("Phone")?.Value  
-        <form asp-controller="Login" asp-action="Logout" method="post">  
-            <button type="submit" class="btn btn-danger">Logout</button>  
-        </form>  
-    </span>  
-}  
-else  
-{  
-    <a href="/login" class="text-gray-900 font-medium hover:text-blue-500 transition">  
-        Log in <span aria-hidden="true">&rarr;</span>  
-    </a>  
-}
-
-
-
-
-        </nav>
-        <div id="notification-dropdown" class="hidden absolute right-0 mt-2 w-80 bg-white shadow-lg rounded-lg z-50">
-            <ul class="divide-y divide-gray-200">
-                <li class="p-4">
-                    <p class="text-sm text-gray-700">Bạn có thông báo mới từ hệ thống.</p>
-                    <span class="text-xs text-gray-500">1 phút trước</span>
-                </li>
-                <li class="p-4">
-                    <p class="text-sm text-gray-700">Đơn hàng #1234 đã được giao thành công.</p>
-                    <span class="text-xs text-gray-500">10 phút trước</span>
-                </li>
-                <li class="p-4">
-                    <p class="text-sm text-gray-700">Khuyến mãi mới đang chờ bạn khám phá!</p>
-                    <span class="text-xs text-gray-500">30 phút trước</span>
-                </li>
-            </ul>
-        </div>
-        <!-- Backdrop -->
-        <div class="hidden fixed inset-0 bg-black bg-opacity-50 z-40" id="backdrop"></div>
-
-        <!-- Mobile menu -->
-        <div class="fixed inset-y-0 right-0 transform translate-x-full transition-transform bg-white w-full max-w-sm z-50 p-6 overflow-y-auto lg:hidden"
-            id="mobile-menu">
-            <div class="flex items-center justify-between mb-6">
-                <a href="#" class="-m-1.5 p-1.5">
-                    <span class="sr-only">Your Company</span>
-                    <img src="/api/placeholder/150/50" alt="Logo" class="h-8 w-auto">
+            <!-- User Account Section -->
+            <div class="hidden lg:flex lg:flex-1 lg:justify-end items-center gap-4">
+                <a href="#" class="text-gray-500 hover:text-gray-900 transition">
+                    <i class="fas fa-bell text-xl"></i>
                 </a>
-                <button type="button" id="close-menu-button"
-                    class="rounded-md p-2.5 text-gray-700 hover:bg-gray-100 transition">
-                    <span class="sr-only">Close menu</span>
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
+                <a href="#" class="text-gray-500 hover:text-gray-900 transition">
+                    <i class="fas fa-shopping-cart text-xl"></i>
+                </a>
 
-            <div class="space-y-4">
-                <button id="mobile-product-button"
-                    class="flex items-center justify-between w-full text-base font-semibold text-gray-900 hover:bg-gray-100 p-3 rounded-lg">
-                    Product
-                    <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                    </svg>
-                </button>
-                <a href="#"
-                    class="block text-base font-semibold text-gray-900 hover:bg-gray-100 p-3 rounded-lg">Features</a>
-                <a href="#"
-                    class="block text-base font-semibold text-gray-900 hover:bg-gray-100 p-3 rounded-lg">Marketplace</a>
-                <a href="#"
-                    class="block text-base font-semibold text-gray-900 hover:bg-gray-100 p-3 rounded-lg">Company</a>
-            </div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="relative">
+                        <button id="userMenuButton"
+                            class="text-gray-500 font-medium flex gap-1 items-center hover:text-gray-900 transition">
+                            <p class="text-black">Welcome!</p>
+                            <span class="cursor-pointer">@User.FindFirst("Phone")?.Value</span>
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
 
-           @if (User.Identity.IsAuthenticated)  
-{  
-    <span class="text-gray-500 font-medium flex gap-1 items-center">  
-        <p class="text-black">Welcome!</p>  
-        @User.FindFirst("Phone")?.Value  
-        <form asp-controller="Login" asp-action="Logout" method="post" class="inline-block">  
-            <button type="submit" class="text-gray-900 font-medium hover:text-blue-500 transition ml-4">  
-                Log out  
-            </button>  
-        </form>  
-    </span>  
-}  
-else  
-{  
-    <a href="/login" class="text-gray-900 font-medium hover:text-blue-500 transition">  
-        Log in <span aria-hidden="true">&rarr;</span>  
-    </a>  
-}
+                        <!-- Desktop Dropdown Menu -->
+                        <div id="userDropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg hidden z-50">
+                            <div class="py-1">
+                                <a href="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    <i class="fas fa-user mr-2"></i>Profile
+                                </a>
+                                <a href="/changepassword" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    <i class="fas fa-key mr-2"></i>Change Password
+                                </a>
+                                <a href="/purchase-history" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    <i class="fas fa-history mr-2"></i>Purchase History
+                                </a>
+                                <form action="@Url.Action("Logout", "Account")" method="post"
+                                    class="border-t border-gray-100">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit"
+                                        class="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
+                                        <i class="fas fa-sign-out-alt mr-2"></i>Log out
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <a href="/login" class="text-gray-900 font-medium hover:text-blue-500 transition">
+                        Log in <span aria-hidden="true">&rarr;</span>
+                    </a>
+                }
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="fixed inset-y-0 right-0 w-64 bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-50">
+            <div class="p-6">
+                <!-- User Info for Mobile -->
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="mb-6 pb-4 border-b border-gray-200">
+                        <p class="text-black font-medium">Welcome!</p>
+                        <p class="text-gray-600 mb-4">@User.FindFirst("Phone")?.Value</p>
+
+                        <!-- Mobile User Menu -->
+                        <div class="space-y-2">
+                            <a href="/profile" class="block text-sm text-gray-700 hover:text-blue-500">
+                                <i class="fas fa-user mr-2"></i>Profile
+                            </a>
+                            <a href="/change-password" class="block text-sm text-gray-700 hover:text-blue-500">
+                                <i class="fas fa-key mr-2"></i>Change Password
+                            </a>
+                            <a href="/purchase-history" class="block text-sm text-gray-700 hover:text-blue-500">
+                                <i class="fas fa-history mr-2"></i>Purchase History
+                            </a>
+                            <form action="@Url.Action("Logout", "Account")" method="post" class="mt-2">
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="text-red-600 hover:text-red-900 transition">
+                                    <i class="fas fa-sign-out-alt mr-2"></i>Log out
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="mb-6 pb-4 border-b border-gray-200">
+                        <a href="/login" class="text-gray-900 font-medium hover:text-blue-500 transition">
+                            Log in <span aria-hidden="true">&rarr;</span>
+                        </a>
+                    </div>
+                }
+
+                <!-- Navigation Links -->
+                <div class="space-y-4">
+                    <a href="/product"
+                        class="block text-gray-900 text-base font-medium hover:text-blue-500">Products</a>
+                    <a href="/newmerch" class="block text-gray-900 text-base font-medium hover:text-blue-500">New
+                        Merch</a>
+                    <a href="/auction" class="block text-gray-900 text-base font-medium hover:text-blue-500">Auction</a>
+                    <a href="/contact" class="block text-gray-900 text-base font-medium hover:text-blue-500">Contact</a>
+                </div>
+
+                <!-- Icons Section -->
+                <div class="mt-6 border-t border-gray-200 pt-4">
+                    <div class="space-y-4">
+                        <a href="#" class="flex items-center text-gray-500 hover:text-gray-900">
+                            <i class="fas fa-bell mr-2"></i>
+                            <span>Notifications</span>
+                        </a>
+                        <a href="#" class="flex items-center text-gray-500 hover:text-gray-900">
+                            <i class="fas fa-shopping-cart mr-2"></i>
+                            <span>Cart</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
 
     <script>
-        // Dropdown toggle
-        const productButton = document.getElementById('product-button');
-        const productDropdown = document.getElementById('product-dropdown');
-        let isDropdownOpen = false;
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const backdrop = document.getElementById('backdrop');
+        const userMenuButton = document.getElementById('userMenuButton');
+        const userDropdown = document.getElementById('userDropdown');
 
-        productButton?.addEventListener('click', () => {
-            isDropdownOpen = !isDropdownOpen;
-            productDropdown.classList.toggle('hidden', !isDropdownOpen);
+        // Toggle user dropdown
+        userMenuButton?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            userDropdown.classList.toggle('hidden');
         });
 
-        document.addEventListener('click', (event) => {
-            if (!productButton?.contains(event.target) && !productDropdown?.contains(event.target)) {
-                productDropdown.classList.add('hidden');
-                isDropdownOpen = false;
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!userDropdown?.contains(e.target) && !userMenuButton?.contains(e.target)) {
+                userDropdown?.classList.add('hidden');
             }
         });
 
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const closeMenuButton = document.getElementById('close-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const backdrop = document.getElementById('backdrop');
+        function toggleMobileMenu() {
+            const isOpen = !mobileMenu.classList.contains('translate-x-full');
+            if (isOpen) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        }
 
         function openMobileMenu() {
             mobileMenu.classList.remove('translate-x-full');
@@ -234,31 +207,16 @@ else
             document.body.style.overflow = '';
         }
 
-        mobileMenuButton?.addEventListener('click', openMobileMenu);
-        closeMenuButton?.addEventListener('click', closeMobileMenu);
-        backdrop?.addEventListener('click', closeMobileMenu);
+        mobileMenuButton.addEventListener('click', toggleMobileMenu);
+        backdrop.addEventListener('click', closeMobileMenu);
 
-
-
-        ///icon chuong
-        const notificationButton = document.querySelector('.fa-bell'); // Chọn icon chuông
-        const notificationDropdown = document.getElementById('notification-dropdown');
-        let isNotificationOpen = false;
-
-        // Toggle dropdown
-        notificationButton?.addEventListener('click', () => {
-            isNotificationOpen = !isNotificationOpen;
-            notificationDropdown.classList.toggle('hidden', !isNotificationOpen);
-        });
-
-        // Ẩn dropdown khi nhấn bên ngoài
-        document.addEventListener('click', (event) => {
-            if (!notificationButton.contains(event.target) && !notificationDropdown.contains(event.target)) {
-                notificationDropdown.classList.add('hidden');
-                isNotificationOpen = false;
+        // Close menu when clicking escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+                userDropdown?.classList.add('hidden');
             }
         });
-
     </script>
 </body>
 

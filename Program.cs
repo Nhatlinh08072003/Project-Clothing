@@ -42,9 +42,9 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
     app.MapControllerRoute(
-    name: "Dangnhap",
+    name: "Login",
     pattern: "/login",
-    defaults: new { controller = "Login", action = "Dangnhap" }
+    defaults: new { controller = "Account", action = "Login" }
 );
  app.MapControllerRoute(
     name: "Dangki",
@@ -52,24 +52,24 @@ app.MapControllerRoute(
     defaults: new { controller = "Register", action = "Dangki" }
 );
 app.MapControllerRoute(
-    name: "QuenMatKhau",
+    name: "ForgotPassword", 
     pattern: "/forgotpassword",
-    defaults: new { controller = "ForgotPassword", action = "QuenMatKhau" }
+    defaults: new { controller = "Account", action = "ForgotPassword" }
 );
 app.MapControllerRoute(
-    name: "DoiMatKhau",
-    pattern: "/changepassword",
-    defaults: new { controller = "ChangePassword", action = "DoiMatKhau" }
+    name: "Resetpassword",
+    pattern: "/resetpassword",
+    defaults: new { controller = "Account", action = "Resetpassword" }
 );
 app.MapControllerRoute(
-    name: "ThongTin",
-    pattern: "/profileuser",
-    defaults: new { controller = "Profile", action = "ThongTin" }
+    name: "Profile",
+    pattern: "/profile",
+    defaults: new { controller = "Account", action = "Profile" }
 );
 app.MapControllerRoute(
-    name: "Daugia",
+    name: "PurchaseHistory",
     pattern: "/purchasehistory",
-    defaults: new { controller = "PruchaseHistory", action = "Daugia" }
+    defaults: new { controller = "Account", action = "PurchaseHistory" }
 );
 app.MapControllerRoute(
     name: "Lienhe",
