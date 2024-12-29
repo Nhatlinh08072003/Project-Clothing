@@ -178,14 +178,43 @@ public async Task<IActionResult> ResetPassword(ResetPasswordDTO model)
     }
 
 
- public IActionResult Profile()
+
+[Authorize] // Ensure only logged-in users can access
+public async Task<IActionResult> Profile()
+{
+    var userId = User.FindFirst("UserId")?.Value;
+    if (string.IsNullOrEmpty(userId))
     {
-        return View();
+        return RedirectToAction("Login");
     }
+
+    var user = await _context.Users.FirstOrDefaultAsync(u => u.UserId == int.Parse(userId));
+    if (user == null)
+    {
+        return NotFound();
+    }
+
+    // Create the UserProfileDTO to pass to the view
+    var model = new UserProfileDTO
+    {
+        Username = user.Username,
+        Email = user.Email,
+        Phone = user.Phone,
+        Address = user.Address,
+        LastLogin = user.LastLogin
+    };
+
+    // Return the view with the model
+    return View(model);
+}
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
+           
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        
     }
 }

@@ -1,3 +1,5 @@
+@model Project_Clothing.Models.UserProfileDTO
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,8 +19,8 @@
                 <img src="profile-picture.jpg" alt="User Avatar"
                     class="w-24 h-24 rounded-full border-4 border-blue-500">
                 <div class="ml-6">
-                    <h1 class="text-2xl font-bold text-gray-800">John Doe</h1>
-                    <p class="text-sm text-gray-500">johndoe@example.com</p>
+                    <h1 class="text-2xl font-bold text-gray-800">@Model.Username</h1>
+                    <p class="text-sm text-gray-500">@Model.Email</p>
                 </div>
             </div>
 
@@ -28,21 +30,23 @@
                 <div>
                     <h2 class="text-lg font-semibold text-gray-800">Personal Details</h2>
                     <div class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">Full Name</label>
-                            <p class="mt-1 text-gray-900">John Doe</p>
-                        </div>
+
                         <div>
                             <label class="block text-sm font-medium text-gray-700">Email Address</label>
-                            <p class="mt-1 text-gray-900">johndoe@example.com</p>
+                            <p class="mt-1 text-gray-900">@Model.Email</p>
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700">Phone Number</label>
-                            <p class="mt-1 text-gray-900">+1 234 567 890</p>
+                            <p class="mt-1 text-gray-900">@Model.Phone</p>
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700">Address</label>
-                            <p class="mt-1 text-gray-900">123 Main Street, Cityville, USA</p>
+                            <p class="mt-1 text-gray-900">@Model.Address</p>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Last Login</label>
+                            <p class="mt-1 text-gray-900">@Model.LastLogin?.ToString("yyyy-MM-dd HH:mm:ss")</p>
                         </div>
                     </div>
                 </div>
@@ -51,14 +55,16 @@
                 <div>
                     <h2 class="text-lg font-semibold text-gray-800">Account Settings</h2>
                     <div class="mt-2 space-y-4">
-                        <button
-                            class="w-full px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <a href="@Url.Action("ResetPassword", "Account")"
+                            class="w-full block text-center px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
                             Change Password
-                        </button>
-                        <button
-                            class="w-full px-4 py-2 text-white bg-red-600 rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">
-                            Delete Account
-                        </button>
+                        </a>
+                        <form method="post" action="@Url.Action("Logout", "Account")">
+                            <button
+                                class="w-full px-4 py-2 text-white bg-red-600 rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">
+                                Logout
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
