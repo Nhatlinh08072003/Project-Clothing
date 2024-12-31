@@ -51,6 +51,11 @@ app.MapControllerRoute(
     pattern: "/register",
     defaults: new { controller = "Register", action = "Dangki" }
 );
+ app.MapControllerRoute(
+    name: "Index",
+    pattern: "/admin",
+    defaults: new { controller = "Admin", action = "Index" }
+);
 app.MapControllerRoute(
     name: "ForgotPassword", 
     pattern: "/forgotpassword",

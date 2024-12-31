@@ -27,57 +27,77 @@ namespace Project_Clothing.Controllers
         {
             return View();
         }
+[HttpPost]
+[ValidateAntiForgeryToken]
+public async Task<IActionResult> Login(LoginDTO model)
+{
+    if (!ModelState.IsValid)
+    {
+        return View(model);
+    }
 
-        // POST action for Login
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginDTO model)
+    try
+    {
+        var user = await _context.Users
+            .FirstOrDefaultAsync(u => u.Email == model.Email);
+
+        if (user == null)
         {
-            if (ModelState.IsValid)
-            {
-                var hashedPassword = model.Password;
-                var user = await _context.Users
-                    .FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == hashedPassword);
-
-                if (user != null)
-                {
-                    // Cập nhật thời gian đăng nhập
-                    user.LastLogin = DateTime.UtcNow;
-                    await _context.SaveChangesAsync();
-
-                    // Tạo claims cho user
-                    var claims = new List<Claim>
-                    {
-                        new Claim(ClaimTypes.Name, user.Username),
-                        new Claim(ClaimTypes.Email, user.Email),
-                        new Claim(ClaimTypes.Role, user.Role?.ToString() ?? "2"),
-                        new Claim("UserId", user.UserId.ToString()),
-                        new Claim("Phone", user.Phone?.ToString() ?? "")
-                    };
-
-                    var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
-                    var authProperties = new AuthenticationProperties
-                    {
-                        IsPersistent = model.RememberMe,
-                        ExpiresUtc = DateTimeOffset.UtcNow.AddHours(24)
-                    };
-
-                    await HttpContext.SignInAsync(
-                        CookieAuthenticationDefaults.AuthenticationScheme,
-                        new ClaimsPrincipal(claimsIdentity),
-                        authProperties);
-
-                    _logger.LogInformation($"User {user.Email} logged in successfully");
-                    return RedirectToAction("Index", "Home");
-                }
-
-                ModelState.AddModelError("", "Email hoặc mật khẩu không đúng");
-            }
-
+            ModelState.AddModelError("", "Email hoặc mật khẩu không đúng");
             return View(model);
         }
 
+        if (user.Password != model.Password) // Note: Implement proper password hashing
+        {
+            ModelState.AddModelError("", "Email hoặc mật khẩu không đúng");
+            return View(model);
+        }
+
+        // Update last login time
+        user.LastLogin = DateTime.UtcNow;
+        await _context.SaveChangesAsync();
+
+        // Create claims
+        var claims = new List<Claim>
+        {
+            new Claim(ClaimTypes.Name, user.Username),
+            new Claim(ClaimTypes.Email, user.Email),
+            new Claim(ClaimTypes.Role, user.Role.ToString()),
+            new Claim("UserId", user.UserId.ToString()),
+            new Claim("Phone", user.Phone ?? "")
+        };
+
+        var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+        var authProperties = new AuthenticationProperties
+        {
+            IsPersistent = model.RememberMe,
+            ExpiresUtc = DateTimeOffset.UtcNow.AddHours(24)
+        };
+
+        await HttpContext.SignInAsync(
+            CookieAuthenticationDefaults.AuthenticationScheme,
+            new ClaimsPrincipal(claimsIdentity),
+            authProperties);
+
+        _logger.LogInformation($"User {user.Email} logged in successfully");
+
+ if (user.Role == 1)
+{
+    _logger.LogInformation($"Admin user {user.Email} redirecting to Admin panel");
+    return RedirectToAction("Index", "Admin");
+}
+_logger.LogInformation($"Normal user {user.Email} redirecting to Home page");
+return RedirectToAction("Index", "Home");
+    }
+    catch (Exception ex)
+    {
+        _logger.LogError($"Login error: {ex.Message}");
+        ModelState.AddModelError("", "Đã xảy ra lỗi trong quá trình đăng nhập");
+        return View(model);
+    }
+}
+       
      
 
         // POST action for Logout
