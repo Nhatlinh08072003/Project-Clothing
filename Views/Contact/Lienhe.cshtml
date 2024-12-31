@@ -1,14 +1,33 @@
 @{
-    ViewData["Title"] = "Contact";
+    ViewData["Title"] = "Liên hệ với chúng tôi";
 }
+
 <h1>@ViewData["Title"]</h1>
 
 <body class="bg-gray-100">
-
     <div class="min-h-screen flex items-center mt-[50px] justify-center">
         <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
             <h1 class="text-2xl font-bold text-gray-800 mb-6">Liên hệ với chúng tôi</h1>
-            <form action="/submit-contact" method="POST" class="space-y-6">
+
+            <!-- Hiển thị thông báo trong form -->
+            <div>
+              @if (TempData["SuccessMessage"] != null)  
+{  
+    <div class="bg-green-100 text-green-800 p-4 rounded-md mb-4">  
+        @TempData["SuccessMessage"]  
+    </div>  
+}
+
+                @if (ViewData["ErrorMessage"] != null)
+                {
+                    <div class="bg-red-100 text-red-800 p-4 rounded-md mb-4">
+                        @ViewData["ErrorMessage"]
+                    </div>
+                }
+            </div>
+
+            <!-- Form liên hệ -->
+            <form action="/Contact/SubmitContact" method="POST" class="space-y-6">
                 <!-- Tên -->
                 <div>
                     <label for="name" class="block text-sm font-medium text-gray-700">Tên</label>
@@ -43,7 +62,4 @@
             </form>
         </div>
     </div>
-
 </body>
-
-</html>
